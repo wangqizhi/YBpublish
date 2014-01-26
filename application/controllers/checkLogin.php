@@ -2,7 +2,7 @@
 /**
 * 
 */
-class checkLogin extends CI_Controller
+class CheckLogin extends CI_Controller
 {
 	
 	
@@ -15,6 +15,7 @@ class checkLogin extends CI_Controller
 	{
 		# code...
 		echo $value;
+		echo $_GET['test'];
 	}
 }
 

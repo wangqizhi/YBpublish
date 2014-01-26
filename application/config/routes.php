@@ -46,6 +46,10 @@ $route['default_controller'] = "pages/view";
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
+$route['checkLogin'] = 'checkLogin';
+$route['todo/todotest'] = 'todo/todotest';
+$route['todo/todotest/(:any)'] = 'todo/todotest/$1';
+$route['checkLogin/(:any)'] = 'checkLogin/$1';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
