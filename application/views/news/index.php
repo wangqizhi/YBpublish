@@ -4,6 +4,6 @@
     <div id="main">
         <?php echo $news_item['text'] ?>
     </div>
-    <p><a href="http://192.168.56.100/index.php/news/<?php echo $news_item['slug'] ?>">View article</a></p>
+    <p><a href="http://<?php echo $_SERVER['SERVER_ADDR'] ?>/index.php/news/<?php echo $news_item['slug'] ?>">View article</a></p>
 
 <?php endforeach ?>
