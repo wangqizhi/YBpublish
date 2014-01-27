@@ -1,6 +1,5 @@
 <html>
 <head>
-  <title><?php echo $title ?> - CodeIgniter 2 Tutorial</title>
+  <title>易班-代码发布工具</title>
 </head>
 <body>
-  <h1>CodeIgniter 2 Tutorial</h1>

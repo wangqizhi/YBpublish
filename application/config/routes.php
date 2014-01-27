@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "pages/view";
+$route['default_controller'] = "ybindex";
 // $route['default_controller'] = "index/check";
 // $route['(:any)'] = 'pagindexes/view/$1';
 // $route['404_override'] = '';
@@ -50,8 +50,8 @@ $route['checkLogin'] = 'checkLogin';
 $route['usedemo'] = 'usedemo';
 $route['usedemo/(:any)'] = 'usedemo/$1';
 $route['checkLogin/(:any)'] = 'checkLogin/$1';
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'pages/view';
+$route['(:any)'] = '/view/$1';
+// $route['default_controller'] = 'pages/view';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

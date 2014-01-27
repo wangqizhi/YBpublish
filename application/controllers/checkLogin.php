@@ -11,11 +11,11 @@ class CheckLogin extends CI_Controller
 		# code...
 		echo "this is check index";
 	}
-	function helloworld($value='')
+	function check()
 	{
 		# code...
-		echo $value;
-		echo $_GET['test'];
+		echo 'check';
+		// echo $_GET['test'];
 	}
 }
 

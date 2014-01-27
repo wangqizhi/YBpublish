@@ -75,7 +75,6 @@ class CI_Log {
 		{
 			return FALSE;
 		}
-
 		$level = strtoupper($level);
 
 		if ( ! isset($this->_levels[$level]) OR ($this->_levels[$level] > $this->_threshold))
