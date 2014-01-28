@@ -11,8 +11,7 @@ class CheckLogin extends CI_Controller
 		$this->output->enable_profiler(TRUE);
 
 
-		$username = $this->session->userdata('UID');
-		$this->ybauth->login_in_law($username);
+		$this->ybauth->login_in_law();
 		echo "this is check index";
 		// echo $username;
 		// var_dump($_SERVER);
@@ -23,9 +22,12 @@ class CheckLogin extends CI_Controller
 	{
 		$result = array();
 		if(isset($_POST['input_user'])){
-			if ($_POST['input_user']=='wqz') {
+			$username = $_POST['input_user'];
+			$passwd = $_POST['input_pass'];
+			if ( $this->ybauth->auth_check($username,$passwd)) {//登录帐号写死，还需要改进这块
+			// if ($_POST['input_user']=='wqz') {//登录帐号写死，还需要改进这块
 				$result = array('result'=>1,'say'=>'ok');
-				$this->ybauth->set_UID('wqz1');
+				// $this->ybauth->set_LID('wqz');
 
 			} else {
 				$result = array('result'=>0,'say'=>'auth failed');
@@ -43,8 +45,7 @@ class CheckLogin extends CI_Controller
 
 	function yblogout()
 	{
-		$this->session->sess_destroy();
-		echo 'logout successful';		
+		$this->ybauth->login_out();		
 	}
 }
 

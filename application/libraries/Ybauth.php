@@ -10,33 +10,61 @@ class Ybauth extends CI_Session {
 	}
 
 	//检查登录
-	public function login_in_law($username){
-		if(!isset($uid=self::userdata('UID'))){
+	public function login_in_law(){
+		// $_SERVER['REMOTE_ADDR'] = 0;
+		$lid = self::userdata('LID');
+		// var_dump($uid);exit;
+
+		// var_dump($lid);
+		if(!isset($lid)){
 			header("Location:/");
+			log_message('debug','---not login');
 			return false;
 		}
-		if($uid != $username){
+		$username = $_COOKIE['uname'];//获取cookie中存在的用户名
+		$need_check_data = md5($username.'@'.$_SERVER['REMOTE_ADDR']);
+		$ready_data = self::userdata('LID');
+		if ($need_check_data != $ready_data) {
 			header("Location:/");
+			log_message('debug','---IP:'.$_SERVER['REMOTE_ADDR'].' ip and username not match');
 			return false;
 		}
-		
-		$need_check_ip = $_SERVER['REMOTE_ADDR'];
-		$ready_ip = self::userdata('ip_address');
-		if ($need_check_ip != $ready_ip) {
-			header("Location:/");
-			return false;
-		}
+
+		log_message('debug','***Who:'.$username.' login check pass');
 		
 
 	}
 
+	//登录
+	public function auth_check($username,$passwd){
+		if ($username=='wqz') {
+			self::set_LID($username);
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
 
 	//登录后设置UID
-	public function set_UID($username)
+	public function set_LID($username)
 	{
 		// $uid = md5($username.$_SERVER['REMOTE_ADDR']);
-		self::set_userdata('UID',$username);
+		$lid = md5($username.'@'.$_SERVER['REMOTE_ADDR']);
+		self::set_userdata('LID',$lid);
+		setcookie('uname',$username,time()+60*60,"/");
+		log_message('debug','***set the login_sign');
+
 		
+	}
+
+	//登出
+	public function login_out()
+	{
+		self::unset_userdata('LID');
+		log_message('debug','***logout successful');
+
 	}
 
 

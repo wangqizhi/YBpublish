@@ -5,11 +5,11 @@ $('#ybindex_submit').on('click',function() {
 			var input_pass = $('#input_pass').val();
 			if (input_user == ""){
 				alertify.alert("empty input is deny");
-				// return false;
+				return false;
 			};
 			if (input_pass == ""){
 				alertify.alert("empty input is deny");
-				// return false;
+				return false;
 			};
 			$.post('checkLogin/check',{
 				input_user:input_user,
