@@ -38,11 +38,16 @@
 |
 */
 
+// online
 $route['default_controller'] = "ybindex";
+$route['checklogin'] = "checkLogin";
 // $route['default_controller'] = "index/check";
 // $route['(:any)'] = 'pagindexes/view/$1';
 // $route['404_override'] = '';
 
+
+
+// test
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
