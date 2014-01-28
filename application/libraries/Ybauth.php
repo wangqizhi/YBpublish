@@ -39,6 +39,7 @@ class Ybauth extends CI_Session {
 	public function auth_check($username,$passwd){
 		if ($username=='wqz') {
 			self::set_LID($username);
+			log_message('debug','***ID:'.$username.' login successful');
 			return true;
 		} else {
 			return false;
