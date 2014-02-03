@@ -9,7 +9,13 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
+$hook['post_controller_constructor'][] = array(
+                                'class'    => 'AuthAcl',
+                                'function' => 'show_power',
+                                'filename' => 'AuthAcl.php',
+                                'filepath' => 'hooks',
+                                // 'params'   => array('beer', 'wine', 'snacks')
+                                );
 
 
 /* End of file hooks.php */

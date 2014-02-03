@@ -348,7 +348,15 @@ class CI_Input {
 		}
 		else
 		{
-			$this->ip_address = $_SERVER['REMOTE_ADDR'];
+			// $this->ip_address = $_SERVER['REMOTE_ADDR'];
+			//fix cli by wqz
+			if (isset($_SERVER['REMOTE_ADDR'])) {
+				$this->ip_address = $_SERVER['REMOTE_ADDR'];
+			} else {
+				# code...
+				$this->ip_address = "127.0.0.1";
+			}
+			
 		}
 
 		if ( ! $this->valid_ip($this->ip_address))

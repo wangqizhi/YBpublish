@@ -20,10 +20,26 @@ $('#ybindex_submit').on('click',function() {
 					alertify.alert(data.say);
 					// return false;
 				}else{
-					location.href='checkLogin';
+					location.href='/ybindex/choose_index';
 				}
 			});
 			return false;
 
 
 });
+
+$('#yb_logout').on('click',function(){
+	alertify.confirm("Do You Want To Exit?",function(e){
+		if (e) {
+			// alertify.log("ok!");
+			location.href="/checkLogin/yblogout";
+
+		} else{
+			alertify.error("You Enter The Cancel!");
+
+		};
+	});
+		return false;
+
+});
+

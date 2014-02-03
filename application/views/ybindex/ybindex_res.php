@@ -1,3 +1,3 @@
-  <link rel="stylesheet" type="text/css" href="/res/ybpublish/ybindex.css">
+  <link rel="stylesheet" type="text/css" href="/res/ybindex/ybindex.css">
 </head>
 <body>

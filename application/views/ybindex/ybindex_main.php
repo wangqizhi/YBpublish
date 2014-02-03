@@ -1,41 +1,31 @@
+<div class="login">
+	<div class="login-screen">
+	          <div class="login-icon">
+	            <!-- <img src="images/login/icon.png" alt="Welcome to Mail App"> -->
+	            <h4>Welcome to <small>Yiban System</small></h4>
+	          </div>
+			  <form action="">
+	          <div class="login-form">
+	            <div class="form-group">
+	              <input type="text" class="form-control login-field" value="" placeholder="Enter your username" id="input_user">
+	              <label class="login-field-icon fui-user" for="input_user"></label>
+	            </div>
 
-<div class='ybindex_top'>
-</div>
+	            <div class="form-group">
+	              <input type="password" class="form-control login-field" value="" placeholder="Password" id="input_pass">
+	              <label class="login-field-icon fui-lock" for="linput_pass"></label>
+	            </div>
 
-<div class='row'>
-	<div class="col-md-2"></div>
-	<div class="col-md-3">
-		<!-- <h1>统一登录</h1> -->
-
+	            <!-- <a class="btn btn-primary btn-lg btn-block" id="ybindex_submit"href="#">Login</a> -->
+	            <input type="submit" class="btn btn-primary btn-lg btn-block" id="ybindex_submit"href="#" value="Login"/>
+	            <!-- <a class="login-link" href="#">Lost your password?</a> -->
+	          </div>
+	          </form>
 	</div>
-
-	<div class="col-md-5">
-		<form class="form-horizontal" role="form" >
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="input_user" id="input_user" placeholder="Username">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-		    <div class="col-sm-10">
-		      <input type="password" class="form-control" name="input_pass"  id="input_pass" placeholder="Password">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button id='ybindex_submit' type="submit" class="btn btn-default">Sign in</button>
-  <script type="text/javascript" src='/res/ybpublish/ybindex.js'></script>
-
-		    </div>
-
-		  </div>
-		</form>
-
-	</div>
-	<div class="col-md-2"></div>
-	
-
-
 </div>
+ <script type="text/javascript" src='/res/ybindex/ybindex.js'></script>
+
+
+
+
+

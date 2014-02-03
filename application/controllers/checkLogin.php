@@ -11,8 +11,12 @@ class CheckLogin extends CI_Controller
 		$this->output->enable_profiler(TRUE);
 
 
-		$this->ybauth->login_in_law();
-		echo "this is check index";
+		// if ($this->ybauth->login_in_law()) {
+		header("Location:/");
+		// }
+		 
+		
+		
 		// echo $username;
 		// var_dump($_SERVER);
 		// header("Location:http://www.baidu.com");
@@ -20,6 +24,8 @@ class CheckLogin extends CI_Controller
 	}
 	function check()
 	{
+		log_message('debug','*************load check');
+
 		$result = array();
 		if(isset($_POST['input_user'])){
 			$username = $_POST['input_user'];
@@ -46,6 +52,8 @@ class CheckLogin extends CI_Controller
 	function yblogout()
 	{
 		$this->ybauth->login_out();		
+		header('Location:/');
+
 	}
 }
 

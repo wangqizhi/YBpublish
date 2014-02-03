@@ -40,7 +40,19 @@
 
 // online
 $route['default_controller'] = "ybindex";
+$route['force_index'] = "ybindex/force_index";
+$route['ybindex/choose_index'] = "ybindex/choose_index";
 $route['checklogin'] = "checkLogin";
+$route['ybindex/(:any)'] = "ybindex/$1";
+$route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
+
+$route['admin'] = "ybadmin/admin_index";
+$route['admin/(:any)'] = "ybadmin/admin_index/$1";
+$route['admin_user/(:any)'] = "ybadmin/admin_user/$1";
+$route['admin_group/(:any)'] = "ybadmin/admin_group/$1";
+$route['admin_power/(:any)'] = "ybadmin/admin_power/$1";
+$route['script/yb_login/(:any)'] = "script/yb_login/$1";
+
 // $route['default_controller'] = "index/check";
 // $route['(:any)'] = 'pagindexes/view/$1';
 // $route['404_override'] = '';
@@ -55,7 +67,7 @@ $route['checkLogin'] = 'checkLogin';
 $route['usedemo'] = 'usedemo';
 $route['usedemo/(:any)'] = 'usedemo/$1';
 $route['checkLogin/(:any)'] = 'checkLogin/$1';
-$route['(:any)'] = '/view/$1';
+// $route['(:any)'] = '/view/$1';
 // $route['default_controller'] = 'pages/view';
 
 /* End of file routes.php */

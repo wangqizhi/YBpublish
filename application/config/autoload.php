@@ -52,7 +52,12 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('session','log','ybauth');
+$autoload['libraries'] = array(
+	'session',//session
+	'log',//log
+	'ybauth',//自定义-登录类
+	'ybpower'//自定义-权限类
+	);
 
 
 /*
