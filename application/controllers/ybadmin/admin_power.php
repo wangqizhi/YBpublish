@@ -30,6 +30,13 @@ class Admin_Power extends CI_Controller {
       if ($powername=="") {
         show_404();        
       }
+
+      //模块配置信息
+    $data['level1_modules'] = $this->ybmodule_model->get_module_where("1");
+    $data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+    $data['level2_modules'] = $this->ybmodule_model->get_module_where("2");
+
+
       $data['power_urls'] = $this->ybpower->get_urls();
       $data['powername'] = $powername;
       $data['login_user'] = $this->session->userdata('uname');//获取登录用户名

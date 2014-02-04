@@ -2,46 +2,43 @@
 class Ybmodule_model extends CI_Model {
 
 	//table:yb_module
-	//id、module_name/show_name/level/href/parent/important
+	//id、module_name/show_name/level/href/parent/important/power_group
 
   public function __construct()
   {
     $this->load->database();
   }
 
-  public function get_power_num()
+  public function get_module_where($level="")
   {
-    $powername = $this->input->post('powername');
-  	$powerurl = $this->input->post('powerurl');
-  	$query = $this->db->get_where('yb_power',array('powername'=>$powername,'powerurl'=>$powerurl));
-  	
-  	
-  	// var_dump($query);exit;
-  	return $query->num_rows;
+    $this->db->order_by('serial' ,'asc');
 
-  }
-
-
-  //返回所有的权限名
-  public function get_powers()
-  {
-    $this->db->distinct();
-    $this->db->select('powername');
-    $query = $this->db->get('yb_power');
-    // var_dump($query->resulit_array());exit;
+    if ($level=="") {
+      $query = $this->db->get('yb_module');
+    } else {
+      $query = $this->db->get_where('yb_module',array('level'=>$level));
+    }
+    
+    
     return $query->result_array();
   }
-
   
 
   //插入权限
-  public function insert_power()
+  public function insert_module()
   {
     $data = array(
-      'powername' => $this->input->post('powername'),
-      'powerurl' => $this->input->post('powerurl'),
+      'module_name' => $this->input->post('module_name'),
+      'show_name' => $this->input->post('show_name'),
+      'level' => $this->input->post('level'),
+      'href' => $this->input->post('href'),
+      'parent' => $this->input->post('parent'),
+      'important' => $this->input->post('important'),
+      'power_group' => $this->input->post('power_group'),
+      'serial' => $this->input->post('serial'),
+      'has_child' => $this->input->post('has_child'),
     );
-    return $this->db->insert('yb_power', $data);
+    return $this->db->insert('yb_module', $data);
   }
 
 }

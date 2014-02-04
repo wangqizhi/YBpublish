@@ -1,6 +1,13 @@
 <?php 
 
 class YbIndex extends CI_Controller {
+	public function __construct()
+  	{
+    	parent::__construct();
+    	$this->load->model('ybadmin/ybmodule_model');
+    	$this->load->model('ybadmin/ybuser_model');
+  	}
+
 	function index()
 	{
 		// var_dump($this->ybauth->login_in_law());
@@ -37,6 +44,14 @@ class YbIndex extends CI_Controller {
 			// echo '1';
 			return false;
 		}
+
+
+		//模块配置信息
+		$data['level1_modules'] = $this->ybmodule_model->get_module_where("1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+    	$data['level2_modules'] = $this->ybmodule_model->get_module_where("2");
+
+
 		$data['login_user'] = $this->session->userdata('uname');
 		$this->load->view('templates/header');
 		$this->load->view('ybindex/ybindex_res');
@@ -52,6 +67,12 @@ class YbIndex extends CI_Controller {
 			header("Location:/");
 			// echo '1';
 		}
+		//模块配置信息
+		$data['level1_modules'] = $this->ybmodule_model->get_module_where("1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+    	$data['level2_modules'] = $this->ybmodule_model->get_module_where("2");
+
+
 		$data['login_user'] = $this->session->userdata('uname');
 		$this->load->view('templates/header');
 		$this->load->view('ybindex/ybindex_res');

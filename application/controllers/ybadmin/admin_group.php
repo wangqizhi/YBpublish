@@ -34,6 +34,13 @@ class Admin_Group extends CI_Controller {
       if ($groupname=="") {
         show_404();        
       }
+//模块配置信息
+    $data['level1_modules'] = $this->ybmodule_model->get_module_where("1");
+    $data['level2_modules'] = $this->ybmodule_model->get_module_where("2");
+    $data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+
+
+
       $data['groupname'] = $groupname;
       $data['persons'] = $this->ybuser_model->get_person_by_group($groupname);
       $data['login_user'] = $this->session->userdata('uname');//获取登录用户名
@@ -58,15 +65,6 @@ class Admin_Group extends CI_Controller {
         $this->ybgroup_model->update_power();
         echo '1';//更新成功
       }
-
     }
-
-
-    
  }
-
- 
-
-
-
  ?>

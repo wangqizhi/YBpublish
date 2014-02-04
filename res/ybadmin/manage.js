@@ -153,6 +153,8 @@ $('#tagsinput').tagsInput({
     }
 });
 
+
+//赋予权限
 $('#yb_givepower_btn').on('click',function(){
 	var groupname = $('#yb_givepower_input').val();
 	var powername='';    
@@ -175,3 +177,34 @@ $('#yb_givepower_btn').on('click',function(){
 });
 
 
+//插入模块
+$('#yb_insertm_btn').on('click',function(){
+	var module_name = $('#module_name').val();
+	var show_name = $('#show_name').val();
+	var level = $('#level').val();
+	var href = $('#href').val();
+	var parent = $('#parent').val();
+	var important = $('#important').val();
+	var power_group = 'Root-'+$('#power_group').val();
+	var serial = $('#serial').val();
+	var has_child = $('#has_child').val();
+	if (module_name=="" || show_name=="" || level=="" || href=="" ||serial=="") {
+		alertify.error("Input Empty");
+	};
+	$.post("/admin_module/add_module",{
+		module_name:module_name,
+		show_name:show_name,
+		level:level,
+		href:href,
+		parent:parent,
+		important:important,
+		power_group:power_group,
+		serial:serial,
+		has_child:has_child
+	},function(data){
+		alertify.alert(data);
+	});
+
+
+
+});

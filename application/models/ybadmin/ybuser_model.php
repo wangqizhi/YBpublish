@@ -9,6 +9,8 @@ class Ybuser_model extends CI_Model {
     $this->load->database();
   }
 
+
+  //判断用户名是否重复
   public function get_user_num($need_pwd=0)
   {
   	$username = $this->input->post('username');
@@ -28,6 +30,7 @@ class Ybuser_model extends CI_Model {
   }
 
 
+  //用于命令行的调用，判断用户名是否重复
   public function cli_get_user_num($username,$passwd)
   {
   	// $username = $this->input->post('username');
@@ -84,5 +87,19 @@ class Ybuser_model extends CI_Model {
 
 
   }
+
+  //获取用户组
+  public function get_user_group($username)
+  {
+    $query = $this->db->get_where('yb_user',array('username'=>$username));
+    // var_dump($query);exit;
+    if ($query->num_rows === 0) {
+      // echo "in";exit;
+      $query_nick = $this->db->get_where('yb_user',array('nick'=>$username));
+      return $query_nick->result_array();    
+    }
+    return $query->result_array();    
+  }
+
 }
 ?>
