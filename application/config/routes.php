@@ -43,7 +43,11 @@ $route['default_controller'] = "ybindex";
 $route['force_index'] = "ybindex/force_index";
 $route['ybindex/choose_index'] = "ybindex/choose_index";
 $route['checklogin'] = "checkLogin";
+$route['checkLogin/(:any)'] = 'checkLogin/$1';
 $route['ybindex/(:any)'] = "ybindex/$1";
+$route['ybpublish'] = "ybpublish/publish_index";
+$route['ybpublish/admin'] = "ybpublish/publish_admin/ybpublish_admin";
+$route['ybpublish/admin/(:any)'] = "ybpublish/publish_admin/$1";
 $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
 
 $route['admin'] = "ybadmin/admin_index";
@@ -67,7 +71,6 @@ $route['news'] = 'news';
 $route['checkLogin'] = 'checkLogin';
 $route['usedemo'] = 'usedemo';
 $route['usedemo/(:any)'] = 'usedemo/$1';
-$route['checkLogin/(:any)'] = 'checkLogin/$1';
 // $route['(:any)'] = '/view/$1';
 // $route['default_controller'] = 'pages/view';
 

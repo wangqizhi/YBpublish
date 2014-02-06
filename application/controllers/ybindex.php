@@ -30,6 +30,8 @@ class YbIndex extends CI_Controller {
 
 	function force_index()
 	{
+		// $this->output->enable_profiler(TRUE);
+		
 			$this->load->view('templates/header');
 			$this->load->view('ybindex/ybindex_res');
 			$this->load->view('templates/header2');
@@ -63,10 +65,10 @@ class YbIndex extends CI_Controller {
 
 	function ybsystem_aboutus()
 	{
-		if (!$this->ybauth->login_in_law()) {
-			header("Location:/");
-			// echo '1';
-		}
+		// if (!$this->ybauth->login_in_law()) {
+		// 	header("Location:/");
+		// 	// echo '1';
+		// }
 		//模块配置信息
 		$data['level1_modules'] = $this->ybmodule_model->get_module_where("1");
 		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));

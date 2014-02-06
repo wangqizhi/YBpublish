@@ -59,6 +59,8 @@ class AuthAcl
 		//超级管理员无权限限制
 		if ($user_group == "Root") {
 			log_message('debug','---User:'.$username.' Auth ACL pass(root user)');
+			setcookie('uname',$username,time()+60*60,"/");
+			
 			return true;
 		}
 
@@ -100,6 +102,7 @@ class AuthAcl
 			}	
 		}
 		if($power_on){
+			setcookie('uname',$username,time()+60*60,"/");
 			log_message('debug','---User:'.$username.' Auth ACL pass (power is ok)');
 		}else {
 			log_message('debug','***User:'.$username.' Auth ACL failed (power is bad)');

@@ -56,7 +56,8 @@ $autoload['libraries'] = array(
 	'session',//session
 	'log',//log
 	'ybauth',//自定义-登录类
-	'ybpower'//自定义-权限类
+	'ybpower',//自定义-权限类
+	'yb_sh',//自定义-sh操作类
 	);
 
 
