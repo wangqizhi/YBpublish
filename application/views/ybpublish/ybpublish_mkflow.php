@@ -44,21 +44,21 @@
 
     <!--button  -->
     <div class="row">
-        <div class="ui two column grid">
-            <div class="column">
-                <div class="ui action input">
+        <!-- <div class="ui two column grid"> -->
+            <div class="eight wide column">
+                <div class="ui fluid action input">
                     <input type="text" placeholder="arg:Which DIR">
                     <div class="ui button">BackUp</div>
                 </div>
             </div>
 
-            <div class="column">
-                <div class="ui action input">
+            <div class="eight wide column">
+                <div class="ui fluid action input">
                     <input type="text" placeholder="arg:Which DIR">
                     <div class="ui button">BackUp</div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 
 

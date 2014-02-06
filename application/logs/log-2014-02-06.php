@@ -3387,3 +3387,153 @@ DEBUG - 2014-02-06 22:56:59 --> File loaded: application/views/ybpublish/ybpubli
 DEBUG - 2014-02-06 22:56:59 --> File loaded: application/views/templates/footer.php
 DEBUG - 2014-02-06 22:56:59 --> Final output sent to browser
 DEBUG - 2014-02-06 22:56:59 --> Total execution time: 0.0864
+DEBUG - 2014-02-06 23:02:36 --> Config Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Hooks Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Utf8 Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> UTF-8 Support Enabled
+DEBUG - 2014-02-06 23:02:36 --> URI Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Router Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Output Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Security Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Input Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-02-06 23:02:36 --> Language Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Loader Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Helper loaded: mypower_helper
+DEBUG - 2014-02-06 23:02:36 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Helper loaded: string_helper
+DEBUG - 2014-02-06 23:02:36 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:36 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:36 --> Controller Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Model Class Initialized
+DEBUG - 2014-02-06 23:02:36 --> Database Driver Class Initialized
+ERROR - 2014-02-06 23:02:36 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /usr/local/web/YBpublish/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-02-06 23:02:36 --> ---User:wqz Auth ACL pass(root user)
+DEBUG - 2014-02-06 23:02:36 --> File loaded: application/views/templates/header_semantic.php
+DEBUG - 2014-02-06 23:02:36 --> File loaded: application/views/templates/header2.php
+DEBUG - 2014-02-06 23:02:36 --> File loaded: application/views/ybpublish/ybpublish_mkflow.php
+DEBUG - 2014-02-06 23:02:36 --> File loaded: application/views/ybpublish/ybpublish_nav.php
+DEBUG - 2014-02-06 23:02:36 --> File loaded: application/views/templates/footer.php
+DEBUG - 2014-02-06 23:02:36 --> Final output sent to browser
+DEBUG - 2014-02-06 23:02:36 --> Total execution time: 0.0880
+DEBUG - 2014-02-06 23:02:45 --> Config Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Hooks Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Utf8 Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> UTF-8 Support Enabled
+DEBUG - 2014-02-06 23:02:45 --> URI Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Router Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Output Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Security Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Input Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-02-06 23:02:45 --> Language Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Loader Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Helper loaded: mypower_helper
+DEBUG - 2014-02-06 23:02:45 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Helper loaded: string_helper
+DEBUG - 2014-02-06 23:02:45 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:45 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:45 --> Controller Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Model Class Initialized
+DEBUG - 2014-02-06 23:02:45 --> Database Driver Class Initialized
+ERROR - 2014-02-06 23:02:45 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /usr/local/web/YBpublish/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-02-06 23:02:45 --> ---User:wqz Auth ACL pass(root user)
+DEBUG - 2014-02-06 23:02:45 --> File loaded: application/views/templates/header_semantic.php
+DEBUG - 2014-02-06 23:02:45 --> File loaded: application/views/templates/header2.php
+DEBUG - 2014-02-06 23:02:45 --> File loaded: application/views/ybpublish/ybpublish_mkflow.php
+DEBUG - 2014-02-06 23:02:45 --> File loaded: application/views/ybpublish/ybpublish_nav.php
+DEBUG - 2014-02-06 23:02:45 --> File loaded: application/views/templates/footer.php
+DEBUG - 2014-02-06 23:02:45 --> Final output sent to browser
+DEBUG - 2014-02-06 23:02:45 --> Total execution time: 0.1507
+DEBUG - 2014-02-06 23:02:58 --> Config Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Hooks Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Utf8 Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> UTF-8 Support Enabled
+DEBUG - 2014-02-06 23:02:58 --> URI Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Router Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Output Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Security Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Input Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-02-06 23:02:58 --> Language Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Loader Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Helper loaded: mypower_helper
+DEBUG - 2014-02-06 23:02:58 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Helper loaded: string_helper
+DEBUG - 2014-02-06 23:02:58 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:58 --> Session Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Session routines successfully run
+DEBUG - 2014-02-06 23:02:58 --> Controller Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Model Class Initialized
+DEBUG - 2014-02-06 23:02:58 --> Database Driver Class Initialized
+ERROR - 2014-02-06 23:02:59 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /usr/local/web/YBpublish/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-02-06 23:02:59 --> ---User:wqz Auth ACL pass(root user)
+DEBUG - 2014-02-06 23:02:59 --> File loaded: application/views/templates/header_semantic.php
+DEBUG - 2014-02-06 23:02:59 --> File loaded: application/views/templates/header2.php
+DEBUG - 2014-02-06 23:02:59 --> File loaded: application/views/ybpublish/ybpublish_mkflow.php
+DEBUG - 2014-02-06 23:02:59 --> File loaded: application/views/ybpublish/ybpublish_nav.php
+DEBUG - 2014-02-06 23:02:59 --> File loaded: application/views/templates/footer.php
+DEBUG - 2014-02-06 23:02:59 --> Final output sent to browser
+DEBUG - 2014-02-06 23:02:59 --> Total execution time: 0.0857
+DEBUG - 2014-02-06 23:03:52 --> Config Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Hooks Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Utf8 Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> UTF-8 Support Enabled
+DEBUG - 2014-02-06 23:03:52 --> URI Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Router Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Output Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Security Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Input Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-02-06 23:03:52 --> Language Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Loader Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Helper loaded: mypower_helper
+DEBUG - 2014-02-06 23:03:52 --> Session Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Helper loaded: string_helper
+DEBUG - 2014-02-06 23:03:52 --> Session routines successfully run
+DEBUG - 2014-02-06 23:03:52 --> Session Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Session routines successfully run
+DEBUG - 2014-02-06 23:03:52 --> Controller Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Model Class Initialized
+DEBUG - 2014-02-06 23:03:52 --> Database Driver Class Initialized
+ERROR - 2014-02-06 23:03:52 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /usr/local/web/YBpublish/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-02-06 23:03:52 --> ---User:wqz Auth ACL pass(root user)
+DEBUG - 2014-02-06 23:03:52 --> File loaded: application/views/templates/header_semantic.php
+DEBUG - 2014-02-06 23:03:52 --> File loaded: application/views/templates/header2.php
+DEBUG - 2014-02-06 23:03:52 --> File loaded: application/views/ybpublish/ybpublish_mkflow.php
+DEBUG - 2014-02-06 23:03:52 --> File loaded: application/views/ybpublish/ybpublish_nav.php
+DEBUG - 2014-02-06 23:03:52 --> File loaded: application/views/templates/footer.php
+DEBUG - 2014-02-06 23:03:52 --> Final output sent to browser
+DEBUG - 2014-02-06 23:03:52 --> Total execution time: 0.0690
+DEBUG - 2014-02-06 23:04:00 --> Config Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Hooks Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Utf8 Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> UTF-8 Support Enabled
+DEBUG - 2014-02-06 23:04:00 --> URI Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Router Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Output Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Security Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Input Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2014-02-06 23:04:00 --> Language Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Loader Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Helper loaded: mypower_helper
+DEBUG - 2014-02-06 23:04:00 --> Session Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Helper loaded: string_helper
+DEBUG - 2014-02-06 23:04:00 --> Session routines successfully run
+DEBUG - 2014-02-06 23:04:00 --> Session Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Session routines successfully run
+DEBUG - 2014-02-06 23:04:00 --> Controller Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Model Class Initialized
+DEBUG - 2014-02-06 23:04:00 --> Database Driver Class Initialized
+ERROR - 2014-02-06 23:04:00 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /usr/local/web/YBpublish/system/database/drivers/mysql/mysql_driver.php 91
+DEBUG - 2014-02-06 23:04:00 --> ---User:wqz Auth ACL pass(root user)
+DEBUG - 2014-02-06 23:04:00 --> File loaded: application/views/templates/header_semantic.php
+DEBUG - 2014-02-06 23:04:00 --> File loaded: application/views/templates/header2.php
+DEBUG - 2014-02-06 23:04:00 --> File loaded: application/views/ybpublish/ybpublish_mkflow.php
+DEBUG - 2014-02-06 23:04:00 --> File loaded: application/views/ybpublish/ybpublish_nav.php
+DEBUG - 2014-02-06 23:04:00 --> File loaded: application/views/templates/footer.php
+DEBUG - 2014-02-06 23:04:00 --> Final output sent to browser
+DEBUG - 2014-02-06 23:04:00 --> Total execution time: 0.0863
