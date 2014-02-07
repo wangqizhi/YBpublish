@@ -7,6 +7,10 @@
         </div>
     </div>
 
+    <!-- who are you! -->
+    <?php 
+    echo '<input id="username" type="hidden" value="'.$my_name.'">';
+     ?>
     <div class="row">
         <div class="column">
             <table class="ui collapsing table segment">
@@ -37,30 +41,61 @@
     <div class="row">
         <div class="column">
             <div class="ui fluid input">
-                <input type="text" placeholder="Enter Flow">
+                <input id="flow_rule_input" type="text" placeholder="Enter Flow">
             </div>
         </div>
     </div>
 
-    <!--button  -->
+    <!--action button  -->
     <div class="row">
         <!-- <div class="ui two column grid"> -->
+            <div class="four wide column">
+                <div class="fluid ui flow_action selection dropdown">
+                    <div class="text">Action</div>
+                    <i class="icon dropdown"></i>
+                    <input id='yb_mkdir_select_val' type="hidden" value='0'>
+                    <div class="menu">
+                        <div class="item" data-value='backup'>BackUp</div>
+                        <div class="item" data-value='copy'>Copy</div>
+                    </div>
+                    
+                </div>
+            </div>
             <div class="eight wide column">
                 <div class="ui fluid action input">
-                    <input type="text" placeholder="arg:Which DIR">
-                    <div class="ui button">BackUp</div>
+                    <input id="ybpublish_action_input" type="text" placeholder="Args">
+                    <div id="flow_make_rule" class="ui button" value="backup">Insert</div>
                 </div>
             </div>
 
-            <div class="eight wide column">
-                <div class="ui fluid action input">
-                    <input type="text" placeholder="arg:Which DIR">
-                    <div class="ui button">BackUp</div>
-                </div>
-            </div>
-        <!-- </div> -->
     </div>
-
+    
+    <!-- share to others -->
+    <div class="row">
+        <div class="four wide column">
+            <div class="ui fluid my_group selection dropdown">
+                <div class="text">Share Group</div>
+                <input id="sharewho" type="hidden">
+                <i class="icon dropdown"></i>
+                <div class="menu">
+                    <?php 
+                    foreach ($all_groups as $group) {
+                        echo '<div class="item" data-value="'.$group['groupname'].'">'.$group['groupname'].'</div>';
+                    }
+                     ?>
+                </div>
+            </div>
+        </div>
+        <div class="four wide column">
+            <div class="ui fluid input">
+                <input id="flow_name_input" type="text" placeholder="Enter Flow Name">
+            </div>
+        </div>
+        <div class="four wide column">
+            <div id="flow_insert_btn" class="ui green button">Make Flow
+            </div>
+        </div>
+    </div>
 
     <div class="ui right dir_list sidebar">
         <p>1</p>
