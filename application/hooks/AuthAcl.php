@@ -76,6 +76,7 @@ class AuthAcl
 		$query = $this->CI->db->get_where('yb_group',array('groupname'=>$user_group))->result_array();
 		if(empty($query)){
 			log_message('debug','***User:'.$username.' Auth ACL failed (not exists group)');
+			header("Location:/force_index");
 			return false;
 		}
 
