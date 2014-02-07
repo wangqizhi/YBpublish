@@ -4,7 +4,8 @@ class Admin_Group extends CI_Controller {
   	{
     	parent::__construct();
       $this->load->model('ybadmin/ybgroup_model');
-    	$this->load->model('ybadmin/ybuser_model');
+      $this->load->model('ybadmin/ybuser_model');
+    	$this->load->model('ybadmin/ybmodule_model');
   	}
 
     //唯一组名判断

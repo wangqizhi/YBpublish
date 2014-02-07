@@ -2,7 +2,7 @@
 class Ybmodule_model extends CI_Model {
 
 	//table:yb_module
-	//id、module_name/show_name/level/href/parent/important/power_group
+	//id、module_name/show_name/level/href/parent/important/power_group/serial
 
   public function __construct()
   {

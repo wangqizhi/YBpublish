@@ -2,7 +2,7 @@
 class Ybuser_model extends CI_Model {
 
 	//table:yb_user
-	//id、username、nick、group、create_time、loginout_time
+	//id、username、nick、group、create_time、loginout_time/passwd
 
   public function __construct()
   {

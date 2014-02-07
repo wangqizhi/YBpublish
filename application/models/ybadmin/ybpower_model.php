@@ -2,7 +2,7 @@
 class Ybpower_model extends CI_Model {
 
 	//table:yb_power
-	//id、powername
+	//id、powername,powerurl
 
   public function __construct()
   {
