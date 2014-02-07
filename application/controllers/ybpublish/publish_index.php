@@ -12,6 +12,9 @@ class Publish_Index extends CI_Controller {
 	function index()
 	{
 		$data['system_title'] = "publish";
+		$user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+		$flow_array = $this->pbadmin_model->get_flow($user_group[0]['group']);
+		var_dump($flow_array);exit;
 		$this->load->view('templates/header_semantic',$data);
 		$this->load->view('templates/header2');
 		$this->load->view('ybpublish/ybpublish_index');

@@ -9,10 +9,15 @@ class Pbadmin_model extends CI_Model {
     $this->load->database();
   }
 
-  public function insert_check()
+
+  // 获取指定组的flow列表，如果不设置组名，则返回false
+  public function get_flow($group="")
   {
-    
-   
+    if ($group =="") {
+      return false;
+    }
+    $query = $this->db->get_where('yb_publish_flow',array('share_who'=>$group));
+    return $query->result_array();
 
   }
 

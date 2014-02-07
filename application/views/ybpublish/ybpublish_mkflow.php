@@ -11,30 +11,8 @@
     <?php 
     echo '<input id="username" type="hidden" value="'.$my_name.'">';
      ?>
-    <div class="row">
-        <div class="column">
-            <table class="ui collapsing table segment">
-                <thead>
-                    <tr>
-                        <th>DIR Name</th>
-                        <th>Real Path</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        foreach ($my_dirs as $dir) {
-                            echo '<tr>';
-                            echo '<td>'.$dir['dir_name'].'</td>';
-                            echo '<td>'.$dir['real_path'].'</td>';
-                            echo '</tr>';
-                        }
 
-                     ?>
 
-                </tbody>
-            </table>
-        </div>
-    </div>
 
 
     <!--flow input  -->
@@ -92,14 +70,38 @@
             </div>
         </div>
         <div class="four wide column">
-            <div id="flow_insert_btn" class="ui green button">Make Flow
+            <div id="flow_insert_btn" class="ui blue button">Make Flow
             </div>
         </div>
     </div>
 
-    <div class="ui right dir_list sidebar">
-        <p>1</p>
+     <!-- 目录、实际路径表 -->
+    <div class="row">
+        <div class="column">
+            <table class="ui collapsing table segment">
+                <thead>
+                    <tr>
+                        <th>DIR Name</th>
+                        <th>Real Path</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        foreach ($my_dirs as $dir) {
+                            echo '<tr>';
+                            echo '<td>'.$dir['dir_name'].'</td>';
+                            echo '<td>'.$dir['real_path'].'</td>';
+                            echo '</tr>';
+                        }
+
+                     ?>
+
+                </tbody>
+            </table>
+        </div>
     </div>
+
+
 </div>
 
 <script type="text/javascript" src='/res/ybpublish/ybpublish_mkflow.js'></script>
