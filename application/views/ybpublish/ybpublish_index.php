@@ -7,7 +7,36 @@
         </div>
     </div>
     <div class="row">
-    	
+        <div class="column">
+            <div class="ui selection dropdown">
+                <div class="text">Choose Publish Flow</div>
+                <i class="icon dropdown"></i>
+                <input id="flow_name_input" type="hidden"></input>
+                <div class="menu">
+                    <?php 
+                    foreach ($flow_array as $flow) {
+                        echo '<div class="item" data-value="'.$flow['flow_name'].'">'.$flow['flow_name'].'</div>';
+                    }
+
+                     ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui form">
+                <div class="field">
+                    <!-- <label>Input Files</label> -->
+                    <textarea></textarea>
+                </div>
+                <div class="field">
+                    <a class="ui blue  submit button">Publish</a>
+                </div>
+            </div>
+        </div>
+       
     </div>
 </div>
 

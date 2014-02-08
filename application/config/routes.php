@@ -48,6 +48,7 @@ $route['ybindex/(:any)'] = "ybindex/$1";
 $route['ybpublish'] = "ybpublish/publish_index";
 $route['ybpublish/mkflow'] = "ybpublish/publish_index/mkflow";
 $route['ybpublish/insert_mkflow'] = "ybpublish/publish_index/insert_mkflow";
+$route['ybpublish/publish_flow_resolve'] = "ybpublish/publish_flow_resolve";
 $route['ybpublish/admin'] = "ybpublish/publish_admin/ybpublish_admin";
 $route['ybpublish/admin/(:any)'] = "ybpublish/publish_admin/$1";
 $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";

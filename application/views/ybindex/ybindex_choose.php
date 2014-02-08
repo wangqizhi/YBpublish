@@ -30,7 +30,6 @@
                 // var_dump($level1_modules);
                 foreach ($level1_modules as $level1_module) {
                   if ($level1_module['has_child'] == '0' and strstr($level1_module['power_group'], $user_group[0]['group'])) {
-                    # code...
                     echo '<li><a href="'.$level1_module['href'].'">'.$level1_module['show_name'].'</a></li>';
                     // echo $level1_module['show_name'];
                   }elseif($level1_module['has_child'] == '1' and strstr($level1_module['power_group'], $user_group[0]['group'])){

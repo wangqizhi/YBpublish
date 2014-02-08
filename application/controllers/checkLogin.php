@@ -30,10 +30,9 @@ class CheckLogin extends CI_Controller
 		if(isset($_POST['input_user'])){
 			$username = $_POST['input_user'];
 			$passwd = $_POST['input_pass'];
-			if ( $this->ybauth->auth_check($username,$passwd)) {//登录帐号写死，还需要改进这块
-			// if ($_POST['input_user']=='wqz') {//登录帐号写死，还需要改进这块
+			// var_dump($this->ybauth->auth_check($username,$passwd));exit;
+			if ( $this->ybauth->auth_check($username,$passwd)) {//
 				$result = array('result'=>1,'say'=>'ok');
-				// $this->ybauth->set_LID('wqz');
 
 			} else {
 				$result = array('result'=>0,'say'=>'auth failed');
