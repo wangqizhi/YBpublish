@@ -23,6 +23,17 @@ class UseDemo extends CI_Controller
 	function testSS()
 	{
 		$this->output->enable_profiler(TRUE);
+
+		//测试简单文字匹配
+		// strstr('$input123','$input');
+
+		//测试正则文字匹配
+		$reg= '/^\$input[+]?\s/';
+		$search = '$input+ am test';
+		$result =array();
+		$test = preg_match($reg, $search,$result);
+		var_dump($test);
+		var_dump($result);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;

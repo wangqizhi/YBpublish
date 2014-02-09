@@ -13,6 +13,7 @@
                 <i class="icon dropdown"></i>
                 <input id="flow_name_input" type="hidden"></input>
                 <div class="menu">
+                    <!-- <div class="item" data-value="2">2</div> -->
                     <?php 
                     foreach ($flow_array as $flow) {
                         echo '<div class="item" data-value="'.$flow['flow_name'].'">'.$flow['flow_name'].'</div>';
@@ -32,7 +33,7 @@
                     <textarea></textarea>
                 </div>
                 <div class="field">
-                    <a class="ui blue  submit button">Publish</a>
+                    <a id="publish_btn" class="ui blue  submit button">Publish</a>
                 </div>
             </div>
         </div>
