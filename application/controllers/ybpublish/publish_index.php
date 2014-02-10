@@ -5,6 +5,7 @@ class Publish_Index extends CI_Controller {
     	parent::__construct();
       	$this->load->model('ybadmin/ybgroup_model');
     	$this->load->model('ybadmin/ybuser_model');
+    	$this->load->model('ybadmin/ybmodule_model');
     	$this->load->model('ybpublish/pbdirpower_model');
     	$this->load->model('ybpublish/pbadmin_model');
   	}
@@ -16,6 +17,8 @@ class Publish_Index extends CI_Controller {
 		$data['system_title'] = "publish";
 		$user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		$data['flow_array'] = $this->pbadmin_model->get_flow($user_group[0]['group']);
+		$data['publish_level1_modules'] = $this->ybmodule_model->get_module_where("publish-1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		// var_dump($data['flow_array']);exit;
 		$this->load->view('templates/header_semantic',$data);
 		$this->load->view('templates/header2');
@@ -26,6 +29,9 @@ class Publish_Index extends CI_Controller {
 
 	public function mkflow()
 	{
+		$data['publish_level1_modules'] = $this->ybmodule_model->get_module_where("publish-1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+		
 		$user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		// var_dump($user_group[0]['group']);exit;
 		$data['my_dirs'] = $this->pbdirpower_model->get_dir($user_group[0]['group']);

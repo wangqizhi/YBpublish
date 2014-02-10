@@ -1,4 +1,4 @@
-<div class="ui grid">
+ <div class="ui grid">
     <div class="row">
         <div class="16 wide column">
             <h2 class="ui header">Publish_System <a href="#"><i id="close_open" class="reorder icon"></i></a></h2>

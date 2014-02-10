@@ -4,6 +4,8 @@ class Publish_Admin extends CI_Controller {
   	{
   		parent::__construct();
     	$this->load->model('ybadmin/ybgroup_model');
+    	$this->load->model('ybadmin/ybmodule_model');
+    	$this->load->model('ybadmin/ybuser_model');
     	$this->load->model('ybpublish/pbdirpower_model');
   	}
 
@@ -20,6 +22,8 @@ class Publish_Admin extends CI_Controller {
 	function ybpublish_admin()
 	{
 		// $this->output->enable_profiler(TRUE);
+		$data['publish_level1_modules'] = $this->ybmodule_model->get_module_where("publish-1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		
       	$data['groups'] = $this->ybgroup_model->get_group();
 

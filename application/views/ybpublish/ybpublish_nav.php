@@ -1,9 +1,10 @@
+
 <div class="ui red vertical mypublish sidebar menu">
     <a href="/" class="item">
         <i class="home icon"></i>
         HomePage
     </a>
-    <a href="/ybpublish" class="item">
+    <!-- <a href="/ybpublish" class="item">
         <i class="heart icon"></i>
         PublishSystem
     </a>
@@ -14,7 +15,19 @@
     <a href="/ybpublish/admin" class="item">
         <i class="setting icon"></i>
         Admin
-    </a>
+    </a> -->
+<?php 
+
+// var_dump($publish_level1_modules);exit;
+
+foreach ($publish_level1_modules as $value) {
+        if (strstr($value['power_group'], $user_group[0]['group'])) {
+            echo '<a href="'.$value['href'].'" class="item"><i class="'.$value['other_mark'].' icon"></i>'.$value['show_name'].'</a>';
+        }
+        
+      }
+ ?>
+
     <div class="item">
         <b>More</b>
         <div class="menu">

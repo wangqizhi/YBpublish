@@ -14,7 +14,7 @@ class Yb_sh{
 	*/
 	public function sh_mkdir($dir_name='')
 	{
-		// echo DIROOT.$dir_name;exit;
+		// echo WORKDIR.$dir_name;exit;
 		$dir_name = ltrim($dir_name,'/');
 		if (file_exists(WORKDIR.$dir_name)) {
 			log_message('debug','***create dir：'.WORKDIR.$dir_name.' dir_exists #failed!');
@@ -36,6 +36,34 @@ class Yb_sh{
 	// public function sh_mounta()
 	// {
 	// 	$sh_out = shell_exec("") 
+	// }
+
+	/*
+	*copy 文件
+	*参数 源 目标
+	*返回值 true false
+	*/
+	// public static function sh_cp($src,$des)
+	// {
+	// 	$src = trim($src,'/');
+	// 	$des = trim($des,'/');
+	// 	$before_time=get_mictime();
+	// 	if(copy(WORKDIR."/".$src, WORKDIR."/".$des)){
+	// 		$after_time=get_mictime();
+	// 		if (md5_file(WORKDIR."/".$src)==md5_file(WORKDIR."/".$des)) {
+	// 			log_message('debug','copy '.WORKDIR.$src.' to '.WORKDIR.$des.' successful',$after_time-$before_time);
+	// 			return true;
+	// 		} else {
+	// 			log_message('debug',WORKDIR.$src.' & '.WORKDIR.$des.' not match');
+	// 			return false;
+	// 		}
+
+
+	// 	}
+	// 	else{
+	// 		log_message('debug','copy '.WORKDIR.$src.' to '.WORKDIR.$des.' #failed!');
+	// 		return false;
+	// 	}
 	// }
 
 }
