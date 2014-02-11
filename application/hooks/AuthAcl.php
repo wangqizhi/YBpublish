@@ -12,24 +12,30 @@ class AuthAcl
 	
 	public function show_power()
 	{
+		// var_dump($this->CI->db->get_where('yb_user',array('username'=>'10000179'))->result_array());exit;
 		# 关闭acl
 		// return true;
 		// exit; 
 		// 
-		$check_url = substr($_SERVER['PHP_SELF'], 11);//去除index.php，获取当前url
+		if (substr($_SERVER['PHP_SELF'], 0 ,10) == "/index.php") {
+			$check_url = substr($_SERVER['PHP_SELF'], 11);//去除index.php，获取当前url
+		}else{
+			$check_url = $_SERVER['PHP_SELF'];
+		}
+		
 		//放行首页
 		// var_dump($check_url);exit;
 		// var_dump($_SERVER['PHP_SELF']);exit;
-		
-		if ($_SERVER['PHP_SELF']=="/index.php/force_index") {
+		// echo $_SERVER['REQUEST_URI'];exit;
+		if ($check_url=="/force_index") {
 			log_message('debug','---in force index.php');
 			return true;
 		}
 
 		//免权限url，后期需要修改写成配置文件
-		if ($check_url=="checkLogin/check" 
-			or $check_url=="checkLogin/yblogout"
-			or $_SERVER['PHP_SELF']=="/index.php") {
+		if ($check_url=="/checkLogin/check" 
+			or $check_url=="/checkLogin/yblogout"
+			or $check_url=="") {
 			log_message('debug','---in page check pass');
 			return true;
 		}
