@@ -13,7 +13,7 @@ class AuthAcl
 	public function show_power()
 	{
 		// var_dump($this->CI->db->get_where('yb_user',array('username'=>'10000179'))->result_array());exit;
-		# 关闭acl
+		# 1关闭acl-test212
 		// return true;
 		// exit; 
 		// 
