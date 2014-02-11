@@ -18,7 +18,7 @@ class AuthAcl
 		// exit; 
 		// 
 		if (substr($_SERVER['PHP_SELF'], 0 ,10) == "/index.php") {
-			$check_url = substr($_SERVER['PHP_SELF'], 11);//去除index.php，获取当前url
+			$check_url = substr($_SERVER['PHP_SELF'], 10);//去除index.php，获取当前url
 		}else{
 			$check_url = $_SERVER['PHP_SELF'];
 		}
