@@ -35,6 +35,16 @@ class Pbadmin_model extends CI_Model {
   }
 
 
+  public function get_distinct_flow_name()
+  {
+    $this->db->select('flow_name');
+    $this->db->distinct();
+    $query = $this->db->get('yb_publish_flow');
+    return $query->result_array();
+
+  }
+
+
   //检查是否有flow的权限，如果不设置组名，则返回false，存在权限返回true
   public function check_flow_power($group="")
   {
@@ -69,14 +79,33 @@ class Pbadmin_model extends CI_Model {
       'share_who' => $share_who,
       'creater' => $this->input->post('creater'),
     );
-     if ($query->num_rows >= 1) {
+    if ($query->num_rows >= 1) {
       return 0;//有重复值
     }
     $this->db->insert('yb_publish_flow',$data);
     return 1;//ok
-
-
   }
+
+  public function insert_publish_flow_args($flow_name,$flow_rule,$share_who,$creater)
+  {
+    $query = $this->db->get_where('yb_publish_flow',array('flow_name'=>$flow_name,'share_who'=>$share_who));
+
+    if ($flow_name=="" or $flow_rule=="" or $share_who=="" or $creater=="") {
+      return -1;//有空值
+    }
+    $data = array(
+      'flow_name' => $flow_name,
+      'flow_rule' => $flow_rule,
+      'share_who' => $share_who,
+      'creater' => $creater,
+    );
+    if ($query->num_rows >= 1) {
+      return 0;//有重复值
+    }
+    $this->db->insert('yb_publish_flow',$data);
+    return 1;//ok
+  }
+
 
 }
 ?>

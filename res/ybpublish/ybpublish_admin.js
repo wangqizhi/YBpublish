@@ -9,7 +9,7 @@ $('#yb_publish_cd_btn').on('click',function(){
 		dir_name:dir_name
 	},function(data){
 		if (data.r) {
-			alertify.log('mkdir successful');
+			alertify.success('mkdir successful');
 		} else{
 			alertify.error(data.a);
 		};
@@ -51,7 +51,7 @@ $('#yb_publish_dir_btn').on('click',function(){
 		// flow_acl:flow_acl
 	},function(data){
 		if(data.r){
-			alertify.log('Insert ok');
+			alertify.success('Insert ok');
 		}else{
 			alertify.error(data.a);
 		}
@@ -59,7 +59,21 @@ $('#yb_publish_dir_btn').on('click',function(){
 	});
 });
 
-// $('#step_one').popup({
-// 	on:'click',
-// 	content:'helloworld'
-// });
+$('#yb_publish_givepower_btn').on('click',function(){
+	var flow_name_select = $('#flow_name_select').val();
+	var group_name_select = $('#group_name_select').val();
+	if (flow_name_select==""||group_name_select=="") {
+		alertify.error('Please Choose!');
+		return false;
+	};
+	$.post('/ybpublish/admin/yb_insert_flow_power',{
+		flow_name_select:flow_name_select,
+		group_name_select:group_name_select
+	},function(data){
+		if(data.r){
+			alertify.success(data.a);
+		}else{
+			alertify.error(data.a);
+		}
+	});
+});

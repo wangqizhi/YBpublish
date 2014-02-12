@@ -60,7 +60,6 @@
                         <div class="menu">
                             <?php 
                             foreach ($groups as $group) {
-                                # code...
                                 echo '<div class="item" data-value="'.$group['groupname'].'">'.$group['groupname'].'</div>';
                             }
                              ?>
@@ -79,6 +78,60 @@
 
         </div>
     </div>
+    <div class="ui divider"></div>
+    <div class="row">
+        <div class="six wide column">
+            <div class="ui small form segment">                  
+                <div class="inline field">
+                    <label>Flow Name</label>
+                    <div class="ui selection dropdown">
+                        <input id="flow_name_select" type="hidden" name="gender">
+                        <div class="text">Choose Flow Name</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <?php 
+                            foreach ($flow_names as $flow_name) {
+                                echo '<div class="item" data-value="'.$flow_name['flow_name'].'">'.$flow_name['flow_name'].'</div>';
+                            }
+                             ?>
+                          
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                    
+            </div>
+        </div>
+        <div class="ten wide column">
+            <div class="ui small form segment">                  
+                <div class="inline field">
+                    <label>Group Name</label>
+                    <div class="ui selection dropdown">
+                        <input id="group_name_select" type="hidden" name="gender">
+                        <div class="text">Choose Group Name</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <?php 
+                            foreach ($groups as $group) {
+                                echo '<div class="item" data-value="'.$group['groupname'].'">'.$group['groupname'].'</div>';
+                            }
+                             ?>
+                          
+                        </div>
+                    </div>
+                </div>
+
+                    
+            </div>
+            <div id="yb_publish_givepower_btn" class="ui blue submit button">Give Power</div>
+
+                
+        </div>
+
+    </div>
+    <div class="ui divider"></div>
+
     
 
 </div>

@@ -7,6 +7,7 @@ class Publish_Admin extends CI_Controller {
     	$this->load->model('ybadmin/ybmodule_model');
     	$this->load->model('ybadmin/ybuser_model');
     	$this->load->model('ybpublish/pbdirpower_model');
+    	$this->load->model('ybpublish/pbadmin_model');
   	}
 
 	// function index()
@@ -26,6 +27,7 @@ class Publish_Admin extends CI_Controller {
 		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		
       	$data['groups'] = $this->ybgroup_model->get_group();
+      	$data['flow_names'] = $this->pbadmin_model->get_distinct_flow_name();
 
 		$data['system_title'] = "publish_admin";
 		$this->load->view('templates/header_semantic',$data);
@@ -55,6 +57,8 @@ class Publish_Admin extends CI_Controller {
 
 	}
 
+
+	//生成挂载信息
 	public function yb_mount_output()
 	{
 		$dir_name = $this->input->post('dir_name');
@@ -65,27 +69,6 @@ class Publish_Admin extends CI_Controller {
 		
 	}
 
-	// public function yb_insert_flow()
-	// {
-	// 	$result = $this->pbadmin_model->insert_publish_flow();
-	// 	if ($result == 2) {
-	// 		$result_array =array('r'=>false,'a'=>'Name Exists');
-
-	// 	} elseif($result ==3) {
-	// 		$result_array =array('r'=>false,'a'=>'Dir is Repeat or wrong');
-	// 	} elseif ($result ==4) {
-	// 		$result_array =array('r'=>false,'a'=>'Source DIR not Exists');
-	// 	} elseif ($result ==5) {
-	// 		$result_array =array('r'=>false,'a'=>'Destination DIR not Exists');
-	// 	}
-	// 	 else{
-	// 		$result_array =array('r'=>true,'a'=>'ok');
-
-	// 	}
-	// 	return $this->output->set_content_type('application/json')->set_output(json_encode($result_array));
-
-		
-	// }
 	public function yb_insert_dir()
 	{
 		$result = $this->pbdirpower_model->insert_publish_group_power();
@@ -94,6 +77,30 @@ class Publish_Admin extends CI_Controller {
 			$result_array=array('r'=>true,'a'=>'ok');
 		} else {
 			$result_array=array('r'=>false,'a'=>'power Exists');
+
+		}
+		return $this->output->set_content_type('application/json')->set_output(json_encode($result_array));
+	}
+
+
+
+	public function yb_insert_flow_power()
+	{
+		$flow_name = $this->input->post('flow_name_select');
+		$share_who = $this->input->post('group_name_select');
+		$flow_info = $this->pbadmin_model->get_flow_by_name($flow_name);
+		$flow_rule = $flow_info[0]['flow_rule'];
+		$creater = $flow_info[0]['creater'];
+
+		$result = $this->pbadmin_model->insert_publish_flow_args($flow_name,$flow_rule,$share_who,$creater);
+		// echo $result;
+		if ($result == 1) {
+			$result_array=array('r'=>true,'a'=>'ok');
+		} elseif($result == 0) {
+			$result_array=array('r'=>false,'a'=>'Flow Power Exists');
+
+		} else {
+			$result_array=array('r'=>false,'a'=>'Insert Wrong');
 
 		}
 		return $this->output->set_content_type('application/json')->set_output(json_encode($result_array));
