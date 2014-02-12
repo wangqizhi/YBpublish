@@ -5,7 +5,7 @@ $('#publish_btn').on('click',function() {
 	// alert(1);return;
 	var flow_name = $('#flow_name_input').val();
 	var flow_input_raw = $('#flow_input_raw').val();
-	if (flow_name=="" || flow_input_raw=="") {
+	if (flow_name=="" ) {
 		alertify.error("Empty Input");
 		return false;
 	};
@@ -14,5 +14,6 @@ $('#publish_btn').on('click',function() {
 		flow_input_raw:flow_input_raw
 	},function(data) {
 		alertify.error(data.a);
+		// alertify.error(data.a);
 	});
 });

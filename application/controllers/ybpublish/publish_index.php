@@ -18,7 +18,7 @@ class Publish_Index extends CI_Controller {
 		$user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
 		$data['flow_array'] = $this->pbadmin_model->get_flow($user_group[0]['group']);
 		$data['publish_level1_modules'] = $this->ybmodule_model->get_module_where("publish-1");
-		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+		$data['user_group'] = $user_group;
 		// var_dump($data['flow_array']);exit;
 		$this->load->view('templates/header_semantic',$data);
 		$this->load->view('templates/header2');

@@ -37,6 +37,14 @@ class Publish_Flow_Resolve extends CI_Controller {
 
   	}
 
+    public function test()
+    {
+      echo "test";
+      $test = ls_dir('/work_dir/test');
+      $test2 = implode("\n", $test);
+      var_dump($test2);
+    }
+
     //处理规则，不会被前端直接调用
     /*
     *自定义函数规则
@@ -49,20 +57,21 @@ class Publish_Flow_Resolve extends CI_Controller {
       $flow_name = $this->input->post('flow_name');
       $flow_input_raw = $this->input->post('flow_input_raw');
 
-      //遇到参数$input会被体会成等号后面的内容 - 过滤了前后空格。
-      $input_replace = trim($flow_input_raw);
-
+      //权限限制
+      // $user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+      // $user_all_flow = $this->pbadmin_model->get_flow($user_group[0]['group']);
+      // var_dump($user_all_flow);exit;
 
       $flow_result = array();
       $flow_rule= $this->pbadmin_model->get_flow_by_name($flow_name)[0]['flow_rule'];
 
-      $last_result =false;//上次函数执行的结果，默认为false
-      $last_message=""; //上次函数执行的消息，默认为空
+      $last_result =array();//上次函数执行的结果，默认为false
+      $last_message=array(); //上次函数执行的消息，默认为空
 
       if ($flow_rule =="") {
-        # code...
         return array('r'=>false,'a'=>"flow rule is empty");
       }
+
       $flow_rule_array = explode('-',$flow_rule);
       foreach ($flow_rule_array as $each_flow_rule) {
 
@@ -84,13 +93,41 @@ class Publish_Flow_Resolve extends CI_Controller {
 
         //特殊参数$input替换(******后期需要改进，使用preg_match_all来进行正则匹配比较有意义)
         if (strstr($args_string,'$input')) {
+          //遇到参数$input会被替换成等号后面的内容 - 过滤了前后空格。
+          $input_replace = trim($flow_input_raw);
           $args_string = str_replace('$input', $input_replace,$args_string);
         }
+
+        //特殊参数$dir处理
+        if (strstr($args_string,'$dir')) {
+          $args_array = explode(",",$args_string);
+          $need_args = "";
+          $out_array = array();
+          foreach ($args_array as $items) {
+            if (strstr($items,'$dir')) {
+              $temp_args = explode(":", $items)[1];
+              if (!is_dir(WORKDIR.$temp_args)) {
+                // $temp_args ="bad";
+                return array('r'=>false,'a'=>'Dir :'.$temp_args.' Not Exist');
+              }
+              $items = str_replace(WORKDIR.$temp_args,"",implode("\n", ls_dir(WORKDIR.$temp_args)));
+            }
+            $out_array[]=$items;
+          }
+          $args_string = implode(',', $out_array);
+          // $args_string = str_replace('$dir', $input_replace,$args_string);
+
+        }
+
+
         // return array('r'=>'test','a'=>explode("(", $each_flow_rule)[1]);
 
         //把参数转化为数组传入函数，为了解决参数数量的问题
         $args = explode(',',$args_string);
 
+
+        // var_dump('yb_'.explode("(", $each_flow_rule)[0]);
+          // continue;
         //调用函数（*****后期需要改进，增加执行函数的安全限制）
         $result_array = call_user_func(array('Publish_Flow_Resolve','yb_'.explode("(", $each_flow_rule)[0]),$args);
 
@@ -99,12 +136,13 @@ class Publish_Flow_Resolve extends CI_Controller {
           return $result_array;
         }
 
-        $last_result =$result_array['r'];
-        $last_message=$result_array['a']; 
+        $last_result[] =$result_array['r'];
+        $last_message[]=$result_array['a']; 
       }
+      $last_message_out = implode('<br>', $last_message);
 
       //若所有函数执行通过，则表示发布成功
-      return array('r'=>true,'a'=>'Publish Successful');
+      return array('r'=>true,'a'=>$last_message_out);
     }
 
     //输入过滤
@@ -143,12 +181,13 @@ class Publish_Flow_Resolve extends CI_Controller {
       return array('r'=>true,'a'=>$args[1],'goon'=>0);
     }
 
-    //copy功能
+    //copy功能,2个参数：输入，源目录，目标目录
     public function yb_copy($args=array())
     {
       $input_files = self::input_filter($args[0]);
       $s_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
       $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
+      // log_message('debug','****：'.$args[2]);
       
 
       //检查input是否为空
@@ -159,6 +198,8 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       //检查权限目录是否存在
       if ($s_dir=="" or $d_dir=="") {
+        log_message('debug','****Dir：'.$s_dir.' or '.$d_dir.' Not Exist');
+
         return array('r'=>false,'a'=>'Rule-Copy : Dir Power Not Exist','goon'=>0);
 
       }
@@ -172,11 +213,43 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       //检查工作目录是否真实存在
       if(!is_dir(WORKDIR.$s_dir) or !is_dir(WORKDIR.$d_dir)){
-        return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
+        return array('r'=>false,'a'=>'Rule-copy : Dir Not Exist','goon'=>0);
 
       }
 
-      return array('r'=>true,'a'=>'ok:'.shell_exec("whoami"),'goon'=>0);
+      //检查不存在的源文件
+      $bad_inputs= array();//源文件不存在的
+      foreach ($input_files as $input_file) {
+        //检查源文件是否存在
+        if (!is_file(WORKDIR.trim($s_dir,'/').'/'.$input_file)) {
+          $bad_inputs[] = trim($input_file,'/');
+        }
+      }
+      if (sizeof($bad_inputs) > 0) {
+        $bad_inputs_out = implode("、", $bad_inputs);
+
+        return array('r'=>false,'a'=>'Rule-copy : Src_file:'.$bad_inputs_out.' Not Exist','goon'=>0);
+
+      }
+
+      $right_copy_files=array();
+      foreach ($input_files as $input_file) {
+        $sh_result = $this->yb_sh->sh_cp(trim($s_dir,'/').$input_file,trim($d_dir,'/').$input_file);
+        // return array('a'=>var_dump($sh_result),'goon'=>0);
+        if ($sh_result!='1') {
+          return array('r'=>false,'a'=>'File:'.$input_file.' copy failed because '.$sh_result,'goon'=>0);
+        }
+        $right_copy_files[] = trim($input_file,'/'); 
+      }      
+
+      $right_copy_files_out=implode("、", $right_copy_files);
+      return array('r'=>true,'a'=>'Copy Files:'.$right_copy_files_out.' Successful','goon'=>1);
+    }
+
+    //测试用
+    public function yb_echo($args=array())
+    {
+      return array('r'=>true,'a'=>$args[0],'goon'=>0);
     }
 
 

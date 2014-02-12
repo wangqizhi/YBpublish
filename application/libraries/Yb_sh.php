@@ -21,7 +21,7 @@ class Yb_sh{
 			return 0;//dir has esists
 		}
 		//mkdir(WORKDIR.$dir_name,0700,true);
-		shell_exec('/bin/mkdir -p '.WORKDIR.$dir_name);
+		shell_exec('sudo /bin/mkdir -p '.WORKDIR.$dir_name);
 		if (is_dir(WORKDIR.$dir_name)) {
 			log_message('debug','---create dir：'.WORKDIR.$dir_name.' successful');
 			return 1;//successful
@@ -33,37 +33,36 @@ class Yb_sh{
 	}
 
 
-	// public function sh_mounta()
-	// {
-	// 	$sh_out = shell_exec("") 
-	// }
 
 	/*
 	*copy 文件
 	*参数 源 目标
 	*返回值 true false
 	*/
-	// public static function sh_cp($src,$des)
-	// {
-	// 	$src = trim($src,'/');
-	// 	$des = trim($des,'/');
-	// 	$before_time=get_mictime();
-	// 	if(copy(WORKDIR."/".$src, WORKDIR."/".$des)){
-	// 		$after_time=get_mictime();
-	// 		if (md5_file(WORKDIR."/".$src)==md5_file(WORKDIR."/".$des)) {
-	// 			log_message('debug','copy '.WORKDIR.$src.' to '.WORKDIR.$des.' successful',$after_time-$before_time);
-	// 			return true;
-	// 		} else {
-	// 			log_message('debug',WORKDIR.$src.' & '.WORKDIR.$des.' not match');
-	// 			return false;
-	// 		}
+	public static function sh_cp($src,$des)
+	{
+		$r_src = WORKDIR.trim($src,'/');
+		$r_des = WORKDIR.trim($des,'/');
+		$result = exec("sudo /bin/cp $r_src $r_des 2>&1",$out,$isok);
+		// return $isok;
+		if ($isok > 0) {
+			log_message('debug','****copy file：'.$r_src.' to'.$r_des.' failed');
+			return $out[0];
+		}else{
+			$before = md5_file($r_src);
+			$after = md5_file($r_des);
+			if ($before == $after) {
+				log_message('debug','---copy file：'.$r_src.' to'.$r_des.' successful');
+				return "1";
 
-
-	// 	}
-	// 	else{
-	// 		log_message('debug','copy '.WORKDIR.$src.' to '.WORKDIR.$des.' #failed!');
-	// 		return false;
-	// 	}
-	// }
+			} else {
+				log_message('debug','***copy file：'.$r_src.' to'.$r_des.' failed ***File is not match');
+				return "copy wrong : File is not match";
+			}
+			
+		}
+		// return $result;
+		// return "/bin/cp $r_src $r_des";
+	}
 
 }

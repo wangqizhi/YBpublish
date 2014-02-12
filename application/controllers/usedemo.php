@@ -36,9 +36,18 @@ class UseDemo extends CI_Controller
 		// var_dump($result);
 
 		//测试分割回车
-		$test= "nihao\nnihao2\nnihao3";
-		echo $test;
-		var_dump(explode("\n", $test));
+		// $test= "nihao\nnihao2\nnihao3";
+		// echo $test;
+		// var_dump(explode("\n", $test));
+
+		//测试sh功能
+		// $out = $this->yb_sh->sh_cp('fda/1','test/2');
+		// var_dump($out);
+
+		//测试递归目录
+		var_dump(ls_dir('/work_dir'));
+
+
 
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
@@ -51,7 +60,27 @@ class UseDemo extends CI_Controller
 		// $this->load->library('session');
 
 	}
+
+	//测试递归目录
+	
+
 }
+
+// function ls_dir($dir)
+// 	{
+// 		// var_dump(glob($dir."/*"));
+// 		global $files;
+// 		foreach (glob($dir."/*") as $file) {
+// 			if (is_dir($file)) {
+// 			// if (1==2) {
+// 				ls_dir($file);
+// 			}else{
+// 				$files[] = $file;
+// 			}
+// 		}
+// 		return $files;
+
+// 	}
 
 
  ?>

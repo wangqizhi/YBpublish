@@ -4,12 +4,16 @@
 // 	},
 // });
 
-// action下拉框
+// action下拉框,添加action说明
 $('.flow_action.selection.dropdown').dropdown({
 	onChange:function(value){
+		content_value = 'Nothing';
+		if (value == 'copy') {
+			var content_value = "arg[0]:$input, arg[1]:source dir, arg[2]:destination dir"; 
+		};
 		$('#ybpublish_action_input').popup({
 			on:'focus',
-			content:value
+			content:content_value
 		});
 	},
 });
@@ -35,13 +39,6 @@ $('#flow_make_rule').on('click',function(){
 		alertify.error("Empty Args");
 		return false;
 	};
-	// if (yb_bu_input=="$input") {
-	// 	if (base_input=="") {
-	// 		$('#flow_input').val(yb_bu_input+'=>'+btn_value);
-	// 	}else{
-	// 		$('#flow_input').val(base_input+'-'+yb_bu_input+'=>'+btn_value);
-	// 	}
-	// }else{
 	if (base_input=="") {
 		$('#flow_rule_input').val(base_input+btn_value+'('+yb_bu_input);
 	}else{
