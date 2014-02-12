@@ -11,6 +11,9 @@ $('.flow_action.selection.dropdown').dropdown({
 		if (value == 'copy') {
 			var content_value = "arg[0]:$input, arg[1]:source dir, arg[2]:destination dir"; 
 		};
+		if (value == 'echo') {
+			var content_value = "arg[0]:showDebug"; 
+		};
 		$('#ybpublish_action_input').popup({
 			on:'focus',
 			content:content_value
