@@ -28,12 +28,18 @@ class UseDemo extends CI_Controller
 		// strstr('$input123','$input');
 
 		//测试正则文字匹配
-		$reg= '/^\$input[+]?\s/';
-		$search = '$input+ am test';
-		$result =array();
-		$test = preg_match($reg, $search,$result);
-		var_dump($test);
-		var_dump($result);
+		// $reg= '/^\$input[+]?\s/';
+		// $search = '$input+ am test';
+		// $result =array();
+		// $test = preg_match($reg, $search,$result);
+		// var_dump($test);
+		// var_dump($result);
+
+		//测试分割回车
+		$test= "nihao\nnihao2\nnihao3";
+		echo $test;
+		var_dump(explode("\n", $test));
+
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;

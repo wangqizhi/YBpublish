@@ -47,9 +47,12 @@ class Publish_Flow_Resolve extends CI_Controller {
     public function deal_with_flow()
     {
       $flow_name = $this->input->post('flow_name');
+      $flow_input_raw = $this->input->post('flow_input_raw');
 
-      //遇到参数$input会被体会成等号后面的内容。
-      $input_replace = 'i am replace';
+      //遇到参数$input会被体会成等号后面的内容 - 过滤了前后空格。
+      $input_replace = trim($flow_input_raw);
+
+
       $flow_result = array();
       $flow_rule= $this->pbadmin_model->get_flow_by_name($flow_name)[0]['flow_rule'];
 
@@ -104,6 +107,30 @@ class Publish_Flow_Resolve extends CI_Controller {
       return array('r'=>true,'a'=>'Publish Successful');
     }
 
+    //输入过滤
+    public function input_filter($input_raw='')
+    {
+      // return array('1','2');
+      if (empty($input_raw)) {
+        return false;//输入为空时返回错误
+      }
+      $input_array = explode("\n",$input_raw);
+      // return $input_array;
+      $result_array = array();
+      foreach ($input_array as $input) {
+        if ($input=="") {
+          continue;
+        }
+
+        $result_array[] = '/'.ltrim(trim($input),'/');
+      }
+      if (empty($result_array)) {
+        return false;//输入为空时返回错误
+      }else{
+        return $result_array;
+      }
+    }
+
 
     //备份功能
     public function yb_backup($args=array())
@@ -119,12 +146,37 @@ class Publish_Flow_Resolve extends CI_Controller {
     //copy功能
     public function yb_copy($args=array())
     {
+      $input_files = self::input_filter($args[0]);
+      $s_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
+      $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
+      
+
+      //检查input是否为空
+      if (empty($input_files)) {
+        return array('r'=>false,'a'=>'Rule-Copy : Empty Input','goon'=>0);
+        
+      }
+
+      //检查权限目录是否存在
+      if ($s_dir=="" or $d_dir=="") {
+        return array('r'=>false,'a'=>'Rule-Copy : Dir Power Not Exist','goon'=>0);
+
+      }
+
+      
       //验证参数个数，不对的话直接报错
       if (sizeof($args)!=3) {
         return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
 
       }
-      return array('r'=>true,'a'=>$args[0],'goon'=>0);
+
+      //检查工作目录是否真实存在
+      if(!is_dir(WORKDIR.$s_dir) or !is_dir(WORKDIR.$d_dir)){
+        return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
+
+      }
+
+      return array('r'=>true,'a'=>'ok:'.shell_exec("whoami"),'goon'=>0);
     }
 
 

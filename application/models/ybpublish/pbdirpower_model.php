@@ -8,6 +8,16 @@ class PbDirPower_model extends CI_Model {
   {
     $this->load->database();
   }
+  //获取真实路径
+  public function get_real_path($dir_name)
+  {
+    $this->db->select('real_path');
+    $query = $this->db->get_where('yb_dir_power',array('dir_name'=>$dir_name));
+    if ($query->num_rows < 1) {
+      return array(array('real_path'=>''));//查询不到目录，后期可以加入权限控制，在搜索条件中加入'power_group'=>$group
+    }
+    return $query->result_array();
+  }
 
 
 

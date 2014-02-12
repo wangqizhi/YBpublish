@@ -30,7 +30,7 @@
             <div class="ui form">
                 <div class="field">
                     <!-- <label>Input Files</label> -->
-                    <textarea></textarea>
+                    <textarea id="flow_input_raw"></textarea>
                 </div>
                 <div class="field">
                     <a id="publish_btn" class="ui blue  submit button">Publish</a>
