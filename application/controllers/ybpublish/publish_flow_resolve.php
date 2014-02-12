@@ -89,7 +89,7 @@ class Publish_Flow_Resolve extends CI_Controller {
         $args = explode(',',$args_string);
 
         //调用函数（*****后期需要改进，增加执行函数的安全限制）
-        $result_array = call_user_func(array('Publish_Flow_Resolve','yb_backup'),$args);
+        $result_array = call_user_func(array('Publish_Flow_Resolve','yb_'.explode("(", $each_flow_rule)[0]),$args);
 
         //如果返回值goon是0，则直接退出流程，返回结果
         if ($result_array['goon'] == 0) {
@@ -111,6 +111,17 @@ class Publish_Flow_Resolve extends CI_Controller {
       //验证参数个数，不对的话直接报错
       if (sizeof($args)!=4) {
         return array('r'=>false,'a'=>'Rule-backup : args have wrong number','goon'=>0);
+
+      }
+      return array('r'=>true,'a'=>$args[1],'goon'=>0);
+    }
+
+    //copy功能
+    public function yb_copy($args=array())
+    {
+      //验证参数个数，不对的话直接报错
+      if (sizeof($args)!=3) {
+        return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
 
       }
       return array('r'=>true,'a'=>$args[0],'goon'=>0);
