@@ -101,21 +101,35 @@ class Publish_Flow_Resolve extends CI_Controller {
 
         //特殊参数$dir处理
         if (strstr($args_string,'$dir')) {
-          $args_array = explode(",",$args_string);
-          $need_args = "";
-          $out_array = array();
-          foreach ($args_array as $items) {
-            if (strstr($items,'$dir')) {
-              $temp_args = explode(":", $items)[1];
-              if (!is_dir(WORKDIR.$temp_args)) {
-                // $temp_args ="bad";
-                return array('r'=>false,'a'=>'Dir :'.$temp_args.' Not Exist');
-              }
-              $items = str_replace(WORKDIR.$temp_args,"",implode("\n", ls_dir(WORKDIR.$temp_args)));
-            }
-            $out_array[]=$items;
+          $dir_replace = trim($flow_input_raw);
+          // return array('r'=>false,'a'=>'Dir :'.WORKDIR.trim($dir_replace,'/'));
+
+          if (!is_dir(WORKDIR.trim($dir_replace,'/'))) {
+            return array('r'=>false,'a'=>'Dir :'.$dir_replace.' Not Exist');
+            // return array('r'=>false,'a'=>'afsdafdsafsdfsad');
           }
-          $args_string = implode(',', trim($out_array));
+          $dir_replace = str_replace(WORKDIR.trim($dir_replace,'/'),"",implode("\n", ls_dir(WORKDIR.trim($dir_replace,'/'))));
+          $args_string = str_replace('$dir', $dir_replace,$args_string);
+
+          // $args_array = explode(",",$args_string);
+          // $need_args = "";
+          // $out_array = array();
+          // foreach ($args_array as $items) {
+          //   if (strstr($items,'$dir')) {
+          //     $temp_args = trim($flow_input_raw);
+
+          //     if (!is_dir(WORKDIR.trim($temp_args,'/'))) {
+          //       return array('r'=>false,'a'=>'Dir :'.$temp_args.' Not Exist');
+          //     }
+          //     $items = str_replace(WORKDIR.trim($temp_args,'/'),"",implode("\n", ls_dir(WORKDIR.trim($temp_args,'/'))));
+          //   }
+
+          //   $out_array[]=$items;
+          // }
+          // log_message('debug','*******'.$args_string);
+
+          // $args_string = implode(',', trim($out_array));
+
           // $args_string = str_replace('$dir', $input_replace,$args_string);
 
         }
@@ -174,6 +188,12 @@ class Publish_Flow_Resolve extends CI_Controller {
     //备份功能
     public function yb_backup($args=array())
     {
+      //验证参数个数，不对的话直接报错
+      if (sizeof($args)!=3) {
+        return array('r'=>false,'a'=>'Rule-backup : args have wrong number','goon'=>0);
+
+      }
+
       $input_files = self::input_filter($args[0]);
       $backup_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
       $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
@@ -194,11 +214,6 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       }
 
-      //验证参数个数，不对的话直接报错
-      if (sizeof($args)!=3) {
-        return array('r'=>false,'a'=>'Rule-backup : args have wrong number','goon'=>0);
-
-      }
 
 
       // $bad_inputs= array();//源文件不存在的
@@ -254,6 +269,13 @@ class Publish_Flow_Resolve extends CI_Controller {
     //copy功能,2个参数：输入，源目录，目标目录
     public function yb_copy($args=array())
     {
+
+      //验证参数个数，不对的话直接报错
+      if (sizeof($args)!=3) {
+        return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
+
+      }
+
       $input_files = self::input_filter($args[0]);
       $s_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
       $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
@@ -275,11 +297,7 @@ class Publish_Flow_Resolve extends CI_Controller {
       }
 
       
-      //验证参数个数，不对的话直接报错
-      if (sizeof($args)!=3) {
-        return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
 
-      }
 
       //检查工作目录是否真实存在
       if(!is_dir(WORKDIR.$s_dir) or !is_dir(WORKDIR.$d_dir)){
