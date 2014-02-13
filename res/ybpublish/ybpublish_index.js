@@ -13,7 +13,12 @@ $('#publish_btn').on('click',function() {
 		flow_name:flow_name,
 		flow_input_raw:flow_input_raw
 	},function(data) {
-		alertify.error(data.a);
+		// if (data.goon == 2) {
+		// 	alertify.alert(data.a);
+		// 	return false;
+		// };
+		alertify.alert(data.a);
+		// alertify.error(data.a);
 		// alertify.error(data.a);
 	});
 });

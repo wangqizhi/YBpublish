@@ -71,11 +71,14 @@ class Pbadmin_model extends CI_Model {
   {
     $flow_name = $this->input->post('flow_name');
     $share_who = $this->input->post('share_who');
+
+    $flow_rule = str_replace(" ", "", $this->input->post('flow_rule'));
+
     $query = $this->db->get_where('yb_publish_flow',array('flow_name'=>$flow_name,'share_who'=>$share_who));
     
     $data = array(
-      'flow_name' => $flow_name,
-      'flow_rule' => $this->input->post('flow_rule'),
+      'flow_name' => trim($flow_name),
+      'flow_rule' => $flow_rule,
       'share_who' => $share_who,
       'creater' => $this->input->post('creater'),
     );

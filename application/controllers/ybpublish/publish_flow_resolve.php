@@ -40,9 +40,10 @@ class Publish_Flow_Resolve extends CI_Controller {
     public function test()
     {
       echo "test";
-      $test = ls_dir('/work_dir/test');
-      $test2 = implode("\n", $test);
-      var_dump($test2);
+
+      $test = $this->pbdirpower_model->get_real_path('backup_yiban')[0]['real_path'];
+      // $test2 = implode("\n", $test);
+      var_dump($test);
     }
 
     //处理规则，不会被前端直接调用
@@ -114,7 +115,7 @@ class Publish_Flow_Resolve extends CI_Controller {
             }
             $out_array[]=$items;
           }
-          $args_string = implode(',', $out_array);
+          $args_string = implode(',', trim($out_array));
           // $args_string = str_replace('$dir', $input_replace,$args_string);
 
         }
@@ -165,7 +166,7 @@ class Publish_Flow_Resolve extends CI_Controller {
       if (empty($result_array)) {
         return false;//输入为空时返回错误
       }else{
-        return $result_array;
+        return array_unique($result_array);
       }
     }
 
@@ -173,13 +174,82 @@ class Publish_Flow_Resolve extends CI_Controller {
     //备份功能
     public function yb_backup($args=array())
     {
+      $input_files = self::input_filter($args[0]);
+      $backup_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
+      $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
+      // echo $args[1];
+      // var_dump($this->pbdirpower_model->get_real_path('backup_yiban'));
+      // return array('r'=>false,'a'=>'show:'.$backup_dir,'goon'=>0);
+
+      //检查input是否为空
+      if (empty($input_files)) {
+        return array('r'=>false,'a'=>'Rule-backup : Empty Input','goon'=>0);
+        
+      }
+
+      //检查权限目录是否存在
+      if ($d_dir=="" || $backup_dir=="") {
+        log_message('debug','****Dir：'.$d_dir.'or '.$backup_dir.' Not Exist');
+        return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
+
+      }
+
       //验证参数个数，不对的话直接报错
-      if (sizeof($args)!=4) {
+      if (sizeof($args)!=3) {
         return array('r'=>false,'a'=>'Rule-backup : args have wrong number','goon'=>0);
 
       }
-      return array('r'=>true,'a'=>$args[1],'goon'=>0);
+
+
+      // $bad_inputs= array();//源文件不存在的
+      // foreach ($input_files as $input_file) {
+      //   //检查源文件是否存在
+      //   if (!is_file(WORKDIR.trim($d_dir,'/').'/'.$input_file)) {
+      //     $bad_inputs[] = trim($input_file,'/');
+      //   }
+      // }
+      // if (sizeof($bad_inputs) > 0) {
+      //   $bad_inputs_out = implode("、", $bad_inputs);
+
+      //   return array('r'=>false,'a'=>'Rule-backup : Backup_file: '.$bad_inputs_out.' Not Exist','goon'=>0);
+      // }
+
+
+      $backup_version = date('YmdHis');
+      //确认备份文件夹已经生成，如果已经生成，提示稍等再备份
+      if (is_dir(WORKDIR.trim($backup_dir,'/').'/'.$backup_version)) {
+        return array('r'=>false,'a'=>'Rule-backup : Backup Wrong,wait a moment ','goon'=>0);
+      }
+
+      //备份 过程
+      foreach ($input_files as $input_file) {
+        $check_dir =dirname(trim($backup_dir,'/').'/'.$backup_version.$input_file);
+
+        if (!is_dir(WORKDIR.$check_dir)) {
+          $temp_result =$this->yb_sh->sh_mkdir($check_dir);
+        // log_message('debug','************helloworld*****'.$temp_result);
+
+          if ($temp_result == 2) {
+            return array('r'=>false,'a'=>'Rule-backup : Mkdir: '.$check_dir.' failed','goon'=>0);
+          }
+        }
+        if (is_file(WORKDIR.trim($d_dir,'/').$input_file)){
+          $sh_result = $this->yb_sh->sh_cp(trim($d_dir,'/').$input_file,trim($backup_dir,'/').'/'.$backup_version.$input_file);
+        }else{
+          $sh_result = '1';
+          log_message('debug','---File:'.$input_file.' Not Need Backup');
+
+        }
+        // return array('a'=>var_dump($sh_result),'goon'=>0);
+        if ($sh_result!='1') {
+          return array('r'=>false,'a'=>'Rule-backup : File:'.$input_file.' copy failed because '.$sh_result,'goon'=>0);
+        }
+      }
+      return array('r'=>true,'a'=>'Version: '.$backup_dir.$backup_version.' Backup Successful','goon'=>1);
     }
+
+
+
 
     //copy功能,2个参数：输入，源目录，目标目录
     public function yb_copy($args=array())
@@ -229,11 +299,20 @@ class Publish_Flow_Resolve extends CI_Controller {
         $bad_inputs_out = implode("、", $bad_inputs);
 
         return array('r'=>false,'a'=>'Rule-copy : Src_file:'.$bad_inputs_out.' Not Exist','goon'=>0);
-
       }
 
+      //文件copy部分
       $right_copy_files=array();
       foreach ($input_files as $input_file) {
+        $check_dir =dirname(trim($d_dir,'/').$input_file);
+        if (!is_dir(WORKDIR.$check_dir)) {
+          $temp_result =$this->yb_sh->sh_mkdir($check_dir);
+        // log_message('debug','************helloworld*****'.$temp_result);
+
+          if ($temp_result == 2) {
+            return array('r'=>false,'a'=>'Rule-copy : mkdir: '.$check_dir.' failed','goon'=>0);
+          }
+         } 
         $sh_result = $this->yb_sh->sh_cp(trim($s_dir,'/').$input_file,trim($d_dir,'/').$input_file);
         // return array('a'=>var_dump($sh_result),'goon'=>0);
         if ($sh_result!='1') {
