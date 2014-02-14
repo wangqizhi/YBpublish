@@ -17,8 +17,8 @@ $('#publish_btn').on('click',function() {
 		// 	alertify.alert(data.a);
 		// 	return false;
 		// };
-		// alertify.alert(data.a);
-		alertify.error(data.a);
+		alertify.alert(data.a);
+		// alertify.error(data.a);
 		// alertify.error(data.a);
 	});
 });

@@ -45,8 +45,8 @@ class UseDemo extends CI_Controller
 		// var_dump($out);
 
 		//测试递归目录
-		var_dump(ls_dir('/work_dir'));
-
+		var_dump(ls_dir('/work_dir/test'));
+		// echo shell_exec("whoami");
 
 
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));

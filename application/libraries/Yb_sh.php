@@ -21,12 +21,12 @@ class Yb_sh{
 			return 0;//dir has esists
 		}
 		//mkdir(WORKDIR.$dir_name,0700,true);
-		shell_exec('sudo /bin/mkdir -p '.WORKDIR.$dir_name);
+		$shell_result = shell_exec('sudo /bin/mkdir -p '.WORKDIR.$dir_name.' 2>&1');
 		if (is_dir(WORKDIR.$dir_name)) {
 			log_message('debug','---create dir：'.WORKDIR.$dir_name.' successful');
 			return 1;//successful
 		} else {
-			log_message('debug','***create dir：'.WORKDIR.$dir_name.' mkdir #failed!');
+			log_message('debug','***create dir：'.WORKDIR.$dir_name.' mkdir #failed! Because:'.$shell_result);
 			return 2;//mkdir failed
 		}
 		

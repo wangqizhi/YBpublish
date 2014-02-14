@@ -75,7 +75,7 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       $flow_rule_array = explode('-',$flow_rule);
       foreach ($flow_rule_array as $each_flow_rule) {
-
+        // echo $each_flow_rule;continue;
         //修复获取到的函数为空的问题
         if ($each_flow_rule =="") {
           continue;
@@ -108,29 +108,14 @@ class Publish_Flow_Resolve extends CI_Controller {
             return array('r'=>false,'a'=>'Dir :'.$dir_replace.' Not Exist');
             // return array('r'=>false,'a'=>'afsdafdsafsdfsad');
           }
-          $dir_replace = str_replace(WORKDIR.trim($dir_replace,'/'),"",implode("\n", ls_dir(WORKDIR.trim($dir_replace,'/'))));
+          $temp_array = ls_dir(WORKDIR.trim($dir_replace,'/'));
+          if (sizeof($temp_array) === 0) {
+            # code...
+            return array('r'=>false,'a'=>'Dir:'.$dir_replace.' Not Have File');
+
+          }
+          $dir_replace = str_replace(WORKDIR.trim($dir_replace,'/'),"",implode("\n", $temp_array));
           $args_string = str_replace('$dir', $dir_replace,$args_string);
-
-          // $args_array = explode(",",$args_string);
-          // $need_args = "";
-          // $out_array = array();
-          // foreach ($args_array as $items) {
-          //   if (strstr($items,'$dir')) {
-          //     $temp_args = trim($flow_input_raw);
-
-          //     if (!is_dir(WORKDIR.trim($temp_args,'/'))) {
-          //       return array('r'=>false,'a'=>'Dir :'.$temp_args.' Not Exist');
-          //     }
-          //     $items = str_replace(WORKDIR.trim($temp_args,'/'),"",implode("\n", ls_dir(WORKDIR.trim($temp_args,'/'))));
-          //   }
-
-          //   $out_array[]=$items;
-          // }
-          // log_message('debug','*******'.$args_string);
-
-          // $args_string = implode(',', trim($out_array));
-
-          // $args_string = str_replace('$dir', $input_replace,$args_string);
 
         }
 
@@ -209,26 +194,10 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       //检查权限目录是否存在
       if ($d_dir=="" || $backup_dir=="") {
-        log_message('debug','****Dir：'.$d_dir.'or '.$backup_dir.' Not Exist');
+        log_message('debug','****Dir：'.$d_dir.' or '.$backup_dir.' Not Exist');
         return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
 
       }
-
-
-
-      // $bad_inputs= array();//源文件不存在的
-      // foreach ($input_files as $input_file) {
-      //   //检查源文件是否存在
-      //   if (!is_file(WORKDIR.trim($d_dir,'/').'/'.$input_file)) {
-      //     $bad_inputs[] = trim($input_file,'/');
-      //   }
-      // }
-      // if (sizeof($bad_inputs) > 0) {
-      //   $bad_inputs_out = implode("、", $bad_inputs);
-
-      //   return array('r'=>false,'a'=>'Rule-backup : Backup_file: '.$bad_inputs_out.' Not Exist','goon'=>0);
-      // }
-
 
       $backup_version = date('YmdHis');
       //确认备份文件夹已经生成，如果已经生成，提示稍等再备份
@@ -260,7 +229,7 @@ class Publish_Flow_Resolve extends CI_Controller {
           return array('r'=>false,'a'=>'Rule-backup : File:'.$input_file.' copy failed because '.$sh_result,'goon'=>0);
         }
       }
-      return array('r'=>true,'a'=>'Version: '.$backup_dir.$backup_version.' Backup Successful','goon'=>1);
+      return array('r'=>true,'a'=>'Version: '.$backup_dir.'/'.$backup_version.' Backup Successful','goon'=>1);
     }
 
 
@@ -343,11 +312,19 @@ class Publish_Flow_Resolve extends CI_Controller {
       return array('r'=>true,'a'=>'Copy Files:'.$right_copy_files_out.' Successful','goon'=>1);
     }
 
-    //测试用
+    //打印传入的参数
     public function yb_echo($args=array())
     {
       return array('r'=>true,'a'=>$args[0],'goon'=>0);
     }
+
+    //回退功能
+    public function yb_rollback($args=array())
+    {
+      # code...
+    }
+
+
 
 
 }
