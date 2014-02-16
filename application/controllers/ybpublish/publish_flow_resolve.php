@@ -229,6 +229,7 @@ class Publish_Flow_Resolve extends CI_Controller {
           return array('r'=>false,'a'=>'Rule-backup : File:'.$input_file.' copy failed because '.$sh_result,'goon'=>0);
         }
       }
+      //记录备份版本
       return array('r'=>true,'a'=>'Version: '.$backup_dir.'/'.$backup_version.' Backup Successful','goon'=>1);
     }
 
@@ -264,9 +265,6 @@ class Publish_Flow_Resolve extends CI_Controller {
         return array('r'=>false,'a'=>'Rule-Copy : Dir Power Not Exist','goon'=>0);
 
       }
-
-      
-
 
       //检查工作目录是否真实存在
       if(!is_dir(WORKDIR.$s_dir) or !is_dir(WORKDIR.$d_dir)){
@@ -321,7 +319,52 @@ class Publish_Flow_Resolve extends CI_Controller {
     //回退功能
     public function yb_rollback($args=array())
     {
-      # code...
+      
+      //验证参数个数，不对的话直接报错
+      if (sizeof($args)!=3) {
+        return array('r'=>false,'a'=>'Rule-rollback : args have wrong number','goon'=>0);
+
+      }
+
+
+      //获取目录中的所有文件
+      $files_string = trim($args[0]);
+      $files_array = explode("\n", $files_string);
+      if (sizeof($files_array) === 0 ) {
+        return array('r'=>false,'a'=>'Rule-rollback : Not Need Rollback');
+      }
+
+      //获取回退版本
+      $version = trim($args[1]);
+
+      //获取目标目录路径
+      $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
+      // $result_array = ls_dir($args[0]);
+      // $result_string = implode("-", $result_array);
+
+      //检查所有文件是否在待回退目录中存在
+      $bad_array=array();
+      foreach ($files_array as $rb_file) {
+        if (!is_file(WORKDIR.$d_dir.$rb_file)) {
+          $bad_array[]=$rb_file;
+        }
+      }
+      $bad_string = implode($bad_array, "、");
+      if (sizeof($bad_array) > 0) {
+        return array('r'=>false,'a'=>'Rule-rollback : files:'.$bad_string.' Rollback failed because waiting backup files Not Found','goon'=>0);
+      }
+
+      // 开始回退
+      foreach ($files_array as $rb_file) {
+        $sh_result = $this->yb_sh->sh_cp(trim($version,'/').$rb_file,$d_dir.$rb_file);
+        if ($sh_result!='1') {
+          return array('r'=>false,'a'=>'File:'.$rb_file.' copy failed because '.$sh_result,'goon'=>0);
+        }
+
+      }
+      
+      return array('r'=>true,'a'=>'Rule-rollback : Successful ','goon'=>1);
+
     }
 
 

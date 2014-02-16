@@ -35,6 +35,7 @@
                     <div class="menu">
                         <div class="item" data-value='backup'>BackUp</div>
                         <div class="item" data-value='copy'>Copy</div>
+                        <div class="item" data-value='rollback'>RollBack</div>
                         <div class="item" data-value='echo'>Echo</div>
                     </div>
                     

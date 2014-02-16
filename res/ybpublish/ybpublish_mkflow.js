@@ -17,6 +17,9 @@ $('.flow_action.selection.dropdown').dropdown({
 		if (value == 'echo') {
 			var content_value = "arg[0]:showDebug"; 
 		};
+		if (value == 'rollback') {
+			var content_value = "arg[0]:version, arg[1]:input,arg[2]:destination dir"; 
+		};
 		$('#ybpublish_action_input').popup({
 			on:'focus',
 			content:content_value
