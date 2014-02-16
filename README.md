@@ -14,6 +14,7 @@ Login_Api:
 Linux_config
 --------------
 modify /etc/sudoers:
+
 	www     ALL=(root)      NOPASSWD:/bin/mkdir
 	www     ALL=(root)      NOPASSWD:/bin/cp
 	www     ALL=(root)      NOPASSWD:/bin/echo
