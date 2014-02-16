@@ -45,7 +45,7 @@ class AuthAcl
 		if (empty($username)) {
 			# code...
 			log_message('debug','***User:'.$username.' Auth ACL failed (not set session)');
-			header("Location:/force_index");
+			header("Location:/force_index"."?referrer=".$check_url);
 			return false;
 
 		}
@@ -73,7 +73,7 @@ class AuthAcl
 		//无此用户
 		if ($user_group === 0) {
 			log_message('debug','***User:'.$username.' Auth ACL failed (not exists user)');
-			header("Location:/force_index");
+			header("Location:/force_index"."?referrer=".$check_url);
 				// echo "in";
 			return false;
 		}
@@ -82,12 +82,12 @@ class AuthAcl
 		$query = $this->CI->db->get_where('yb_group',array('groupname'=>$user_group))->result_array();
 		if(empty($query)){
 			log_message('debug','***User:'.$username.' Auth ACL failed (not exists group)');
-			header("Location:/force_index");
+			header("Location:/force_index"."?referrer=".$check_url);
 			return false;
 		}
 
 		if (empty($query[0]['power'])) {
-			header("Location:/force_index");
+			header("Location:/force_index"."?referrer=".$check_url);
 			log_message('debug','***User:'.$username.' Auth ACL failed (not exists power)');
 			return false;
 			

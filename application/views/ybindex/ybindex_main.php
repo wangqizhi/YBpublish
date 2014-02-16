@@ -3,6 +3,7 @@
 	          <div class="login-icon">
 	            <!-- <img src="images/login/icon.png" alt="Welcome to Mail App"> -->
 	            <h4>Welcome to <small>Yiban System</small></h4>
+
 	          </div>
 			  <form action="">
 	          <div class="login-form">
@@ -23,6 +24,16 @@
 	          </form>
 	</div>
 </div>
+<script>
+	<?php 
+	if (isset($referrer)) {
+		echo "var my_ref='".$referrer."';";
+	}else{
+		echo "var my_ref='';";
+	}
+
+	 ?>
+</script>
  <script type="text/javascript" src='/res/ybindex/ybindex.js'></script>
 
 

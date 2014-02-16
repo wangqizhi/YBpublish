@@ -1,6 +1,7 @@
 
 $('#ybindex_submit').on('click',function() {
 			// reset();
+			// alert(my_ref);return false;
 			var input_user = $('#input_user').val();
 			var input_pass = $('#input_pass').val();
 			if (input_user == ""){
@@ -20,7 +21,13 @@ $('#ybindex_submit').on('click',function() {
 					alertify.alert(data.say);
 					// return false;
 				}else{
-					location.href='/ybindex/choose_index';
+					if (my_ref!="") {
+						location.href=my_ref;
+
+					} else{
+						location.href='/ybindex/choose_index';
+
+					};
 				}
 			});
 			return false;

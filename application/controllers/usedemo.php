@@ -49,10 +49,11 @@ class UseDemo extends CI_Controller
 		// echo shell_exec("whoami");
 
 		//ls_dir
-		$test = glob("/work_dir/backup/yiban/*");
-		var_dump($test);
+		// $test = glob("/work_dir/backup/yiban/*");
+		// var_dump($test);
 
-
+		//print all args
+		var_dump($_SERVER['HTTP_REFERER']);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;

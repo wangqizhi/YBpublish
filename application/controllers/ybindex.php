@@ -31,11 +31,11 @@ class YbIndex extends CI_Controller {
 	function force_index()
 	{
 		// $this->output->enable_profiler(TRUE);
-		
+			$data['referrer'] = $this->input->get('referrer');
 			$this->load->view('templates/header');
 			$this->load->view('ybindex/ybindex_res');
 			$this->load->view('templates/header2');
-			$this->load->view('ybindex/ybindex_main');
+			$this->load->view('ybindex/ybindex_main',$data);
 			$this->load->view('templates/footer');
 	}
 
