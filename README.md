@@ -1,33 +1,31 @@
 YBpublish
 ====================
 
-
-
 DB_config:
 --------------
-application/config/database.php
+	application/config/database.php
 
 
 Login_Api:
 --------------
-application/libraries/Ybauth.php  --#57
+	application/libraries/Ybauth.php  --#57
 
 
 Linux_config
 --------------
-modify /etc/sudoers
-www     ALL=(root)      NOPASSWD:/bin/mkdir
-www     ALL=(root)      NOPASSWD:/bin/cp
-www     ALL=(root)      NOPASSWD:/bin/echo
-www     ALL=(root)      NOPASSWD:/usr/bin/tee
+modify /etc/sudoers:
+	www     ALL=(root)      NOPASSWD:/bin/mkdir
+	www     ALL=(root)      NOPASSWD:/bin/cp
+	www     ALL=(root)      NOPASSWD:/bin/echo
+	www     ALL=(root)      NOPASSWD:/usr/bin/tee
 
 
 Mkdir
 --------------
-/work_dir
+	/work_dir
 
 
 chmod 777
 --------------
-application/logs
-application/cache
+	application/logs
+	application/cache
