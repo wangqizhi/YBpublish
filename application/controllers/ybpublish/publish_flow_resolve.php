@@ -142,6 +142,12 @@ class Publish_Flow_Resolve extends CI_Controller {
       $last_message_out = implode('<br>', $last_message);
 
       //若所有函数执行通过，则表示发布成功
+      if (!is_dir(WORKDIR."logs")) {//建立log目录
+        $this->yb_sh->sh_mkdir("logs");
+      }
+      // $flow_name = "testincode";
+      shell_exec("echo '".date('Y-m-d-H:i:s')." Publish ".$flow_name." Successful!' | sudo tee -a ".WORKDIR."logs/publish.logs 2>&1");
+
       return array('r'=>true,'a'=>$last_message_out);
     }
 

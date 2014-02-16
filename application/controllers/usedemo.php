@@ -53,7 +53,12 @@ class UseDemo extends CI_Controller
 		// var_dump($test);
 
 		//print all args
-		var_dump($_SERVER['HTTP_REFERER']);
+		// var_dump($_SERVER['HTTP_REFERER']);
+
+		//test recode logs
+		$flow_name = "test";
+        $result = shell_exec("echo ".date('YmdHis')." Publish ".$flow_name." Successful! >> ".WORKDIR."logs/publish.logs 2>&1");
+        var_dump($result);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;
