@@ -247,13 +247,18 @@ class Publish_Flow_Resolve extends CI_Controller {
     {
 
       //验证参数个数，不对的话直接报错
-      if (sizeof($args)!=3) {
+      if (sizeof($args)!=4) {
         return array('r'=>false,'a'=>'Rule-copy : args have wrong number','goon'=>0);
 
       }
 
       $input_files = self::input_filter($args[0]);
-      $s_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
+      if ($args[3]=='yes') {
+        $s_dir = $args[1];
+      }else{
+        $s_dir = $this->pbdirpower_model->get_real_path($args[1])[0]['real_path'];
+      }
+      // $s_dir = '';
       $d_dir = $this->pbdirpower_model->get_real_path($args[2])[0]['real_path'];
       // log_message('debug','****：'.$args[2]);
       
@@ -266,7 +271,7 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       //检查权限目录是否存在
       if ($s_dir=="" or $d_dir=="") {
-        log_message('debug','****Dir：'.$s_dir.' or '.$d_dir.' Not Exist');
+        log_message('debug','****Dir：'.$args[0].' or '.$d_dir.' Not Exist');
 
         return array('r'=>false,'a'=>'Rule-Copy : Dir Power Not Exist','goon'=>0);
 
@@ -274,7 +279,7 @@ class Publish_Flow_Resolve extends CI_Controller {
 
       //检查工作目录是否真实存在
       if(!is_dir(WORKDIR.$s_dir) or !is_dir(WORKDIR.$d_dir)){
-        return array('r'=>false,'a'=>'Rule-copy : Dir Not Exist','goon'=>0);
+        return array('r'=>false,'a'=>'Rule-copy : Dir '.$s_dir.' Not Exist','goon'=>0);
 
       }
 

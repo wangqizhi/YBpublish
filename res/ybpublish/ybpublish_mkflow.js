@@ -9,7 +9,7 @@ $('.flow_action.selection.dropdown').dropdown({
 	onChange:function(value){
 		content_value = 'Nothing';
 		if (value == 'copy') {
-			var content_value = "arg[0]:input, arg[1]:source dir, arg[2]:destination dir"; 
+			var content_value = "arg[0]:input, arg[1]:source dir, arg[2]:destination dir, arg[3]:Dir Or Not"; 
 		};
 		if (value == 'backup') {
 			var content_value = "arg[0]:input, arg[1]:backup dir, arg[2]:destination dir"; 
