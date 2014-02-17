@@ -1,0 +1,6 @@
+
+创建ftp用户
+CREATE TABLE `users` (
+  `name` varchar(128) NOT NULL,
+  `passwd` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

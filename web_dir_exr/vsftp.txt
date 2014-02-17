@@ -1,0 +1,7 @@
+config dir:
+/etc/vsftpd/user_config/xj
+
+
+config fils:
+local_root=/work_dir/input
+anon_mkdir_write_enable=YES
