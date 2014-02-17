@@ -55,6 +55,7 @@ $route['ybpublish/admin/(:any)'] = "ybpublish/publish_admin/$1";
 $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
 
 $route['admin'] = "ybadmin/admin_index";
+$route['admin/ftp_manage'] = "ybadmin/admin_index/ftp_manage";
 $route['admin/(:any)'] = "ybadmin/admin_index/$1";
 $route['admin_user/(:any)'] = "ybadmin/admin_user/$1";
 $route['admin_group/(:any)'] = "ybadmin/admin_group/$1";

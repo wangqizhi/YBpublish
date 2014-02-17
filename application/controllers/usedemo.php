@@ -4,6 +4,11 @@
 */
 class UseDemo extends CI_Controller
 {
+	public function __construct()
+  	{
+    	parent::__construct();
+    	$this->load->model('ybvsftp_model');
+  	}
 	
 	
 	function index()
@@ -56,9 +61,22 @@ class UseDemo extends CI_Controller
 		// var_dump($_SERVER['HTTP_REFERER']);
 
 		//test recode logs
-		$flow_name = "test";
-        $result = shell_exec("echo ".date('YmdHis')." Publish ".$flow_name." Successful! >> ".WORKDIR."logs/publish.logs 2>&1");
-        var_dump($result);
+		// $flow_name = "test";
+  //       $result = shell_exec("echo ".date('YmdHis')." Publish ".$flow_name." Successful! >> ".WORKDIR."logs/publish.logs 2>&1");
+  //       var_dump($result);
+
+		//test other database
+		// $name = "wqz";
+		// $passwd = md5("1");
+		// $db_ftp = $this->load->database("vsftpd",TRUE);
+		// $data = array(
+  // 			"name"=>$name,
+  // 			"passwd"=>$passwd
+  // 			);
+		// $db_ftp->insert('users',$data);
+		var_dump($this->ybvsftp_model->insert_ftp_user('wqz1','1'));
+
+
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;

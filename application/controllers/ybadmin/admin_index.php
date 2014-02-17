@@ -62,6 +62,15 @@ class Admin_Index extends CI_Controller {
 
 	}
 
+	function ftp_manage(){
+		// echo "fpt_manage";
+		$data['system_title'] = "FTP_Manage";
+		$this->load->view('templates/header_semantic',$data);
+		$this->load->view('templates/header2');
+		$this->load->view('ybadmin/ybadmin_ftp_manage');
+		$this->load->view('templates/footer');
+	}
+
 
 	
 

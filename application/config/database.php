@@ -65,5 +65,22 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 
+$db['vsftpd']['hostname'] = '127.0.0.1';
+$db['vsftpd']['username'] = 'root';
+$db['vsftpd']['password'] = '1';
+$db['vsftpd']['database'] = 'vsftpd';
+$db['vsftpd']['dbdriver'] = 'mysql';
+$db['vsftpd']['dbprefix'] = '';
+$db['vsftpd']['pconnect'] = FALSE;
+$db['vsftpd']['db_debug'] = TRUE;
+$db['vsftpd']['cache_on'] = FALSE;
+$db['vsftpd']['cachedir'] = '';
+$db['vsftpd']['char_set'] = 'utf8';
+$db['vsftpd']['dbcollat'] = 'utf8_general_ci';
+$db['vsftpd']['swap_pre'] = '';
+$db['vsftpd']['autoinit'] = TRUE;
+$db['vsftpd']['stricton'] = FALSE;
+
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */
