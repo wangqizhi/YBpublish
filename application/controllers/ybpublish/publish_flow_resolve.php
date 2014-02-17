@@ -362,6 +362,7 @@ class Publish_Flow_Resolve extends CI_Controller {
       }
       $bad_string = implode($bad_array, "、");
       if (sizeof($bad_array) > 0) {
+        log_message('debug','***d_dir files Not Match');
         return array('r'=>false,'a'=>'Rule-rollback : files:'.$bad_string.' Rollback failed because waiting backup files Not Found','goon'=>0);
       }
 
@@ -369,6 +370,7 @@ class Publish_Flow_Resolve extends CI_Controller {
       foreach ($files_array as $rb_file) {
         $sh_result = $this->yb_sh->sh_cp(trim($version,'/').$rb_file,$d_dir.$rb_file);
         if ($sh_result!='1') {
+          log_message('debug','---Rollback Successful');
           return array('r'=>false,'a'=>'File:'.$rb_file.' copy failed because '.$sh_result,'goon'=>0);
         }
 
