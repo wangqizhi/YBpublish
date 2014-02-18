@@ -317,8 +317,9 @@ class Publish_Flow_Resolve extends CI_Controller {
         $right_copy_files[] = trim($input_file,'/'); 
       }      
 
-      $right_copy_files_out=implode("、", $right_copy_files);
-      return array('r'=>true,'a'=>'Copy Files:'.$right_copy_files_out.' Successful','goon'=>1);
+      // $right_copy_files_out=implode("、", $right_copy_files);
+      $right_files_nums = sizeof($right_copy_files);
+      return array('r'=>true,'a'=>'Copy '.$right_files_nums.' \'s Files Successful','goon'=>1);
     }
 
     //打印传入的参数

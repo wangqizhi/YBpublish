@@ -101,5 +101,23 @@ class Ybuser_model extends CI_Model {
     return $query->result_array();    
   }
 
+  //修改用户密码
+  public function update_user_pwd()
+  {
+    $username = $this->input->post('username');
+    $passwd = $this->input->post('passwd');
+    $query = $this->db->get_where('yb_user',array('username'=>$username));
+    if ($query->num_rows === 1) {
+      $data = array(
+        'username'=>$username,
+        'passwd'=>$passwd,
+        );
+        
+    }else{
+      return 0;
+    }
+
+  }
+
 }
 ?>

@@ -56,12 +56,17 @@ $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
 
 $route['admin'] = "ybadmin/admin_index";
 $route['admin/ftp_manage'] = "ybadmin/admin_index/ftp_manage";
+$route['admin/account_setting'] = "ybadmin/admin_index/account_setting";
 $route['admin/(:any)'] = "ybadmin/admin_index/$1";
 $route['admin_user/(:any)'] = "ybadmin/admin_user/$1";
 $route['admin_group/(:any)'] = "ybadmin/admin_group/$1";
 $route['admin_power/(:any)'] = "ybadmin/admin_power/$1";
 $route['admin_module/(:any)'] = "ybadmin/admin_module/$1";
 $route['script/yb_login/(:any)'] = "script/yb_login/$1";
+
+//api
+$route['api/account/(:any)'] = "api/api_account/$1";
+
 
 // $route['default_controller'] = "index/check";
 // $route['(:any)'] = 'pagindexes/view/$1';

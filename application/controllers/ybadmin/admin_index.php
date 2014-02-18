@@ -72,6 +72,21 @@ class Admin_Index extends CI_Controller {
 	}
 
 
+	function account_setting(){
+		// echo "fpt_manage";
+		$data['system_title'] = "Account_Setting";
+		$data['username'] = $this->session->userdata('uname');
+		$this->load->view('templates/header_semantic',$data);
+		$this->load->view('templates/header2');
+		$this->load->view('ybadmin/ybadmin_change_passwd');
+		$this->load->view('templates/footer');
+
+		
+	}
+
+
+
+
 	
 
 }

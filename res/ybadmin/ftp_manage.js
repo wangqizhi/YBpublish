@@ -1,1 +1,0 @@
-alertify.success("helloworld");
