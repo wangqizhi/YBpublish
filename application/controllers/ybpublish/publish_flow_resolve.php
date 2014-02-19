@@ -141,13 +141,13 @@ class Publish_Flow_Resolve extends CI_Controller {
       }
       $last_message_out = implode('<br>', $last_message);
 
-      //若所有函数执行通过，则表示发布成功
       if (!is_dir(WORKDIR."logs")) {//建立log目录
         $this->yb_sh->sh_mkdir("logs");
       }
       // $flow_name = "testincode";
       shell_exec("echo '".date('Y-m-d-H:i:s')." Publish ".$flow_name." Successful!' | sudo tee -a ".WORKDIR."logs/publish.logs 2>&1");
-
+      
+      //若所有函数执行通过，则表示发布成功
       return array('r'=>true,'a'=>$last_message_out);
     }
 
@@ -317,9 +317,24 @@ class Publish_Flow_Resolve extends CI_Controller {
         $right_copy_files[] = trim($input_file,'/'); 
       }      
 
-      // $right_copy_files_out=implode("、", $right_copy_files);
+      
+      $right_copy_files_out=implode("\n", $right_copy_files);
+      if (!is_dir(WORKDIR."logs")) {//建立log目录
+        $this->yb_sh->sh_mkdir("logs");
+      }
+      if (!is_dir(WORKDIR."logs/publish_files_log")) {//建立log目录
+        $this->yb_sh->sh_mkdir("logs/publish_files_log");
+      }
+      $time_dir=date('Y/m/d');
+      if (!is_dir(WORKDIR."logs/publish_files_log"."/".$time_dir)) {//建立log目录
+        $this->yb_sh->sh_mkdir("logs/publish_files_log"."/".$time_dir);
+      }
+      // $flow_name = "testincode";
+      shell_exec("echo '".date('Y-m-d-H:i:s')."\n".$right_copy_files_out."\n' | sudo tee -a ".WORKDIR."logs/publish_files_log"."/".$time_dir."/publish_files.log 2>&1");
+
       $right_files_nums = sizeof($right_copy_files);
       return array('r'=>true,'a'=>'Copy '.$right_files_nums.' \'s Files Successful','goon'=>1);
+      // return array('r'=>true,'a'=>'','goon'=>1);
     }
 
     //打印传入的参数
