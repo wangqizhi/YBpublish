@@ -107,12 +107,13 @@ class Ybuser_model extends CI_Model {
     $username = $this->input->post('username');
     $passwd = $this->input->post('passwd');
     $query = $this->db->get_where('yb_user',array('username'=>$username));
-    if ($query->num_rows === 1) {
+    $query2 = $this->db->get_where('yb_user',array('nick'=>$username));
+    if ($query->num_rows === 1 or $query2->num_rows === 1) {
       $data = array(
-        'username'=>$username,
-        'passwd'=>$passwd,
+        'passwd'=>md5(trim($passwd)),
         );
-        
+      $this->db->update('yb_user',$data);
+      return 1;
     }else{
       return 0;
     }

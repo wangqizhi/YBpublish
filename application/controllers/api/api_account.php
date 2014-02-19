@@ -19,7 +19,15 @@ class Api_Account extends CI_Controller {
   	//修改密码api
   	public function change_pwd()
   	{
-  		echo "test1";
+  		$result = $this->ybuser_model->update_user_pwd();
+  		if ($result===0) {
+  			$result_array=array('r'=>false,'a'=>'User Not Exists');
+  		} else {
+  			$result_array=array('r'=>true,'a'=>'Update Password Successful');
+
+  		}
+      return $this->output->set_content_type('application/json')->set_output(json_encode($result_array));
+  		
 
   	}
 

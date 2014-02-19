@@ -17,8 +17,8 @@
 				<div class="ui form">
   					<div class="inline fields">
      				 	<div class="field">
-                    <label><?php echo 'Your Account: '.$username ?></label>
-          					<input type="text" placeholder="PassWord">
+                    <label id="update_username_label" value="<?php echo $username ?>"><?php echo 'Your Account: '.$username ?></label>
+          					<input id="update_passwd_input" type="text" placeholder="PassWord">
       					</div>
      					<div class="field">
           					<div class="ui red button" id="change_pwd_btn">
