@@ -47,6 +47,7 @@ $route['checkLogin/(:any)'] = 'checkLogin/$1';
 $route['ybindex/(:any)'] = "ybindex/$1";
 $route['ybpublish'] = "ybpublish/publish_index";
 $route['ybpublish/mkflow'] = "ybpublish/publish_index/mkflow";
+$route['ybpublish/mktep'] = "ybpublish/publish_index/mktep";
 $route['ybpublish/insert_mkflow'] = "ybpublish/publish_index/insert_mkflow";
 $route['ybpublish/publish_flow_resolve'] = "ybpublish/publish_flow_resolve";
 $route['ybpublish/publish_flow_resolve/test'] = "ybpublish/publish_flow_resolve/test";

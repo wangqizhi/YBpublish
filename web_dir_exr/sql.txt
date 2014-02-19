@@ -4,3 +4,32 @@ CREATE TABLE `users` (
   `name` varchar(128) NOT NULL,
   `passwd` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+管理-模板数据
+INSERT INTO `yb_module` (`id`, `module_name`, `show_name`, `level`, `href`, `parent`, `important`, `power_group`, `serial`, `has_child`, `other_mark`)
+VALUES
+	(1, 'messages', 'Messages', '1', '/', '0', 0, 'Root-', 1, 0, NULL),
+	(2, 'systems', 'Systems', '1', '#', '0', 0, 'Root', 2, 1, NULL),
+	(3, 'aboutus', 'AboutUs', '1', '/ybindex/ybsystem_aboutus', '0', 0, 'Root', 3, 0, NULL),
+	(5, 'publish_system', 'Publish_System', '2', '/ybpublish', 'systems', 0, 'Root', 1, 0, NULL),
+	(6, 'case_system', 'Case_System', '2', '/ybcase', 'systems', 0, 'Root', 2, 0, NULL),
+	(7, 'admin', 'Admin', '2', '/admin', 'systems', 1, 'Root', 1, 0, NULL),
+	(8, 'manageuser', 'Manage User ', 'admin', '/admin/manage/manageuser', '0', 0, 'Root', 1, 0, NULL),
+	(9, 'managegroup', 'Manage Group', 'admin', '/admin/manage/managegroup', '0', 0, 'Root', 2, 0, NULL),
+	(10, 'managepower', 'Manage Power', 'admin', '/admin/manage/managepower', '0', 0, 'Root', 3, 0, NULL),
+	(11, 'managemodule', 'Manage Module', 'admin', '/admin/manage/managemodule', '0', 0, 'Root', 4, 0, NULL),
+	(12, 'publishsystem', 'PublishSystem', 'publish-1', '/ybpublish', '0', 0, 'Root-', 1, 0, 'heart'),
+	(13, 'makeflow', 'MakeFlow', 'publish-1', '/ybpublish/mkflow', '0', 0, 'Root-', 2, 0, 'edit'),
+	(14, 'publish_admin', 'Admin', 'publish-1', '/ybpublish/admin', '0', 0, 'Root-', 3, 0, 'setting'),
+	(15, 'demo', 'ForTest', '1', '/usedemo/testSS', '0', 0, 'Root-', 4, 0, NULL),
+	(16, 'ftp_manage', 'FTP_Manage', '2', '/admin/ftp_manage', 'systems', 1, 'Root-', 2, 0, NULL),
+	(18, 'account_setting', 'Account Settings', '2', '/admin/account_setting', 'systems', 1, 'Root-', 2, 0, NULL),
+	(19, 'maketemplate', 'MakeTemplate', 'publish-1', '/ybpublish/mktep', '0', 0, 'Root-', 4, 0, 'Archive');
+
+
+	
+

@@ -71,6 +71,10 @@ class Pbadmin_model extends CI_Model {
   {
     $flow_name = $this->input->post('flow_name');
     $share_who = $this->input->post('share_who');
+    if ($share_who=="") {
+      $share_who = "template";  
+    }
+    
 
     $flow_rule = str_replace(" ", "", $this->input->post('flow_rule'));
 

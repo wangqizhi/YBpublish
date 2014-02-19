@@ -46,6 +46,25 @@ class Publish_Index extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function mktep()
+	{
+		$data['publish_level1_modules'] = $this->ybmodule_model->get_module_where("publish-1");
+		$data['user_group'] = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+		
+		$user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
+		// var_dump($user_group[0]['group']);exit;
+		$data['my_dirs'] = $this->pbdirpower_model->get_dir($user_group[0]['group']);
+		$data['my_name'] = $user_group[0]['username'];
+		// var_dump($data['my_dirs']);exit;
+		$data['all_groups'] = $this->ybgroup_model->get_group();
+		$data['system_title'] = "publish_make_flow";
+		$this->load->view('templates/header_semantic',$data);
+		$this->load->view('templates/header2');
+		$this->load->view('ybpublish/ybpublish_mktemplate',$data);
+		$this->load->view('ybpublish/ybpublish_nav');
+		$this->load->view('templates/footer');
+	}
+
 	public function insert_mkflow()
 	{
 		$result = $this->pbadmin_model->insert_publish_flow();
