@@ -9,6 +9,7 @@ $('#publish_btn').on('click',function() {
 		alertify.error("Empty Input");
 		return false;
 	};
+	$('#loading_field').attr("class","ui active inverted dimmer");
 	$.post('/ybpublish/publish_flow_resolve',{
 		flow_name:flow_name,
 		flow_input_raw:flow_input_raw
@@ -17,8 +18,10 @@ $('#publish_btn').on('click',function() {
 		// 	alertify.alert(data.a);
 		// 	return false;
 		// };
+		$('#loading_field').attr("class","ui disable inverted dimmer");
 		alertify.alert(data.a);
 		// alertify.error(data.a);
 		// alertify.error(data.a);
 	});
 });
+

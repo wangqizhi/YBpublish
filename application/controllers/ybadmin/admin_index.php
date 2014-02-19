@@ -72,6 +72,7 @@ class Admin_Index extends CI_Controller {
 	}
 
 
+	//帐号设置-密码修改
 	function account_setting(){
 		// echo "fpt_manage";
 		$data['system_title'] = "Account_Setting";

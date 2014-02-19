@@ -30,6 +30,9 @@
             <div class="ui form">
                 <div class="field">
                     <!-- <label>Input Files</label> -->
+                    <div id="loading_field" class="ui disable inverted dimmer">
+                        <div class="ui medium text loader">Loading</div>
+                    </div>
                     <textarea id="flow_input_raw"></textarea>
                 </div>
                 <div class="field">
