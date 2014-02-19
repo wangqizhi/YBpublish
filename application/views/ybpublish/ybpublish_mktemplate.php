@@ -7,15 +7,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="16 wide column">
-        	<div class="ui form">
-  				<div class="inline fields">
-  					<div class="field">
-                   	<label id="update_username_label" value="">hello</label>
-          			<input class="fluid" id="update_passwd_input" type="password" placeholder="PassWord">
-      				</div>
-      			</div>
-  			</div>
+      <div class="column">
+        <div class="ui form">
+          <div class="field">
+            <label>Flow Module</label>
+            <input type="text">
+          </div>
         </div>
-     </div>
+      </div>
+    </div>
 </div>
