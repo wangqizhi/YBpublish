@@ -28,7 +28,8 @@ VALUES
 	(15, 'demo', 'ForTest', '1', '/usedemo/testSS', '0', 0, 'Root-', 4, 0, NULL),
 	(16, 'ftp_manage', 'FTP_Manage', '2', '/admin/ftp_manage', 'systems', 1, 'Root-', 2, 0, NULL),
 	(18, 'account_setting', 'Account Settings', '2', '/admin/account_setting', 'systems', 1, 'Root-', 2, 0, NULL),
-	(19, 'maketemplate', 'MakeTemplate', 'publish-1', '/ybpublish/mktep', '0', 0, 'Root-', 4, 0, 'Archive');
+	(19, 'maketemplate', 'MakeTemplate', 'publish-1', '/ybpublish/mktep', '0', 0, 'Root-', 4, 0, 'Archive'),
+	(20, 'publish_files_analyse', 'PublishFiles_Analyse', 'publish-1', '/ybpublish/analyse', '0', 0, 'Root-', 5, 0, 'Search');
 
 
 	

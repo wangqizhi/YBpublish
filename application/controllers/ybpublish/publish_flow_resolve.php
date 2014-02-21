@@ -397,6 +397,11 @@ class Publish_Flow_Resolve extends CI_Controller {
 
     }
 
+    public function yb_checkinput($args=array())
+    {
+      
+    }
+
 
 
 

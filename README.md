@@ -19,6 +19,7 @@ modify /etc/sudoers:
 	www     ALL=(root)      NOPASSWD:/bin/cp
 	www     ALL=(root)      NOPASSWD:/bin/echo
 	www     ALL=(root)      NOPASSWD:/usr/bin/tee
+	www     ALL=(root)      NOPASSWD:/usr/bin/rsync
 
 
 Mkdir
