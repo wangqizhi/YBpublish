@@ -31,5 +31,17 @@ class Api_Account extends CI_Controller {
 
   	}
 
+    //登录状态检测
+    public function online_or_not()
+    {
+      if (empty($this->session->userdata('uname'))) {
+        echo 0;//丢失登录状态 
+      } else {
+        echo 1;
+      }
+      
+
+    }
+
 }
 ?>

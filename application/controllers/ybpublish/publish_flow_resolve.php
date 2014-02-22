@@ -12,18 +12,19 @@ class Publish_Flow_Resolve extends CI_Controller {
     //处理flow的对外接口
   	public function index()
   	{
-      // $this->output->enable_profiler(TRUE);
-
+      
       $flow_name = $this->input->post('flow_name');
       $result_array = array();
       $user_group = $this->ybuser_model->get_user_group($this->session->userdata('uname'));
       
+      // var_dump($this->session->userdata('uname'));exit;
+      // var_dump($user_group);exit;
 
       //验证输入项不能为空
       if(empty($flow_name)){
         $result_array = array('r'=>false,'a'=>'flow_name is empty');
       // }elseif(!$this->pbadmin_model->check_flow_power($user_group[0]['group'])){
-      }elseif(!$this->pbadmin_model->check_flow_power($user_group[0]['group'])){
+      }elseif(!$user_group or !$this->pbadmin_model->check_flow_power($user_group[0]['group'])){
         $result_array = array('r'=>false,'a'=>'power is wrong');
       }elseif(!empty($flow_name))
       {
@@ -394,6 +395,11 @@ class Publish_Flow_Resolve extends CI_Controller {
       
       return array('r'=>true,'a'=>'Rule-rollback : Successful ','goon'=>1);
 
+    }
+
+    public function yb_checkinput($args=array())
+    {
+      
     }
 
 

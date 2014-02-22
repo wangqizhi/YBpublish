@@ -47,6 +47,10 @@ class Ybuser_model extends CI_Model {
   //获取在组中的所有人
   public function get_person_by_group($value='')
   {
+    if (!$value or $value=='') {
+      return false;
+    }
+    
     $this->db->select('username,nick');
     // $this->db->distinct();
     $query = $this->db->get_where('yb_user',array('group'=>$value));
@@ -91,6 +95,10 @@ class Ybuser_model extends CI_Model {
   //获取用户组
   public function get_user_group($username)
   {
+    //fix空值返回所有用户的bug
+    if (!$username or $username=='') {
+      return false;
+    }
     $query = $this->db->get_where('yb_user',array('username'=>$username));
     // var_dump($query);exit;
     if ($query->num_rows === 0) {

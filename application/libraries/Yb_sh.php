@@ -65,4 +65,25 @@ class Yb_sh{
 		// return "/bin/cp $r_src $r_des";
 	}
 
+	/*
+	*rsync_文件夹发布 --暂不使用
+	*参数 源 目标
+	*返回值 true false
+	*/
+	// public function sh_rsync($src,$des)
+	// {
+	// 	$r_src = WORKDIR.trim($src,'/');
+	// 	$r_des = WORKDIR.trim($des,'/');
+	// 	echo "sudo /usr/bin/rsync --progress -av $r_src/* $r_des/ 2>&1";exit;
+	// 	$result = exec("sudo /usr/bin/rsync --progress -av $r_src/* $r_des/ 2>&1",$out,$isok);
+	// 	if ($isok > 0) {
+	// 		log_message('debug','****copy file：'.$r_src.' to'.$r_des.' failed');
+	// 		var_dump($out);
+	// 		// return $out[0];
+	// 	}else{
+	// 		var_dump($result);
+	// 		// return $result;
+	// 	}
+	// }
+
 }

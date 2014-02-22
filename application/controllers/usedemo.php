@@ -7,7 +7,7 @@ class UseDemo extends CI_Controller
 	public function __construct()
   	{
     	parent::__construct();
-    	$this->load->model('ybvsftp_model');
+    	// $this->load->model('ybvsftp_model');
   	}
 	
 	
@@ -28,6 +28,20 @@ class UseDemo extends CI_Controller
 	function testSS()
 	{
 		$this->output->enable_profiler(TRUE);
+
+
+		// echo php_sapi_name();
+		
+		
+		//test &
+		// $b = & $c;
+		// $b[] = 'test1' ;
+		// $c[] = 'test2' ;
+		// echo var_dump($b).'<br>';
+		// echo var_dump($c);
+
+		//test_rsync
+		// $this->yb_sh->sh_rsync("/test/test3","/test2");
 
 		//测试简单文字匹配
 		// strstr('$input123','$input');
@@ -54,8 +68,8 @@ class UseDemo extends CI_Controller
 		// echo shell_exec("whoami");
 
 		//ls_dir
-		// $test = glob("/work_dir/backup/yiban/*");
-		// var_dump($test);
+		$test = glob("/work_dir/*");
+		var_dump($test);
 
 		//print all args
 		// var_dump($_SERVER['HTTP_REFERER']);
@@ -75,6 +89,10 @@ class UseDemo extends CI_Controller
   // 			);
 		// $db_ftp->insert('users',$data);
 		// var_dump($this->ybvsftp_model->insert_ftp_user('wqz1','1'));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2040bbcdbfde4eadb2b9d60212215eba95043c74
 
 		show_error('test_error',404);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
@@ -109,6 +127,9 @@ class UseDemo extends CI_Controller
 // 		return $files;
 
 // 	}
+
+
+
 
 
  ?>

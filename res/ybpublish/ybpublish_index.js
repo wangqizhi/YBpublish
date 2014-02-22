@@ -10,21 +10,24 @@ $('#publish_btn').on('click',function() {
 		return false;
 	};
 	$('#loading_field').attr("class","ui active inverted dimmer");
+	// $.post('/ybpublish/publish_flow_resolve',{},function(data){alert(data)});
 
-	$.post('/ybpublish/publish_flow_resolve',{
-		flow_name:flow_name,
-		flow_input_raw:flow_input_raw
-	},function(data) {
-		// if (data.goon == 2) {
-		// 	alertify.alert(data.a);
-		// 	return false;
-		// };
 
-		$("#loading_field").attr("class","ui disable inverted dimmer");
-
-		alertify.alert(data.a);
-		// alertify.error(data.a);
-		// alertify.error(data.a);
+	$.post('/api/account/online_or_not',{},function(data){
+		// alert(data);return;
+		if (data != 1) {
+			alertify.error('Please Login');
+			return false;
+		}else{
+			$.post('/ybpublish/publish_flow_resolve',{
+				flow_name:flow_name,
+				flow_input_raw:flow_input_raw
+			},function(data) {
+				$("#loading_field").attr("class","ui disable inverted dimmer");
+				alertify.alert(data.a);
+			});
+		}
 	});
+	
 });
 
