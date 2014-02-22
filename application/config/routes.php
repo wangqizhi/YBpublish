@@ -45,6 +45,8 @@ $route['ybindex/choose_index'] = "ybindex/choose_index";
 $route['checklogin'] = "checkLogin";
 $route['checkLogin/(:any)'] = 'checkLogin/$1';
 $route['ybindex/(:any)'] = "ybindex/$1";
+
+// publish_system
 $route['ybpublish'] = "ybpublish/publish_index";
 $route['ybpublish/mkflow'] = "ybpublish/publish_index/mkflow";
 $route['ybpublish/mktep'] = "ybpublish/publish_index/mktep";
@@ -55,6 +57,12 @@ $route['ybpublish/admin'] = "ybpublish/publish_admin/ybpublish_admin";
 $route['ybpublish/admin/(:any)'] = "ybpublish/publish_admin/$1";
 $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
 
+// case_system
+$route['ybcase'] = "ybcase/case_index";
+$route['ybcase/(:any)'] = "ybcase/case_index/$1";
+
+
+//admin
 $route['admin'] = "ybadmin/admin_index";
 $route['admin/ftp_manage'] = "ybadmin/admin_index/ftp_manage";
 $route['admin/account_setting'] = "ybadmin/admin_index/account_setting";
@@ -63,6 +71,8 @@ $route['admin_user/(:any)'] = "ybadmin/admin_user/$1";
 $route['admin_group/(:any)'] = "ybadmin/admin_group/$1";
 $route['admin_power/(:any)'] = "ybadmin/admin_power/$1";
 $route['admin_module/(:any)'] = "ybadmin/admin_module/$1";
+
+//script
 $route['script/yb_login/(:any)'] = "script/yb_login/$1";
 
 //api
