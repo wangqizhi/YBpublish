@@ -1,5 +1,5 @@
 <?php 
-class Case_Index extends CI_Controller {
+class Case_Admin extends CI_Controller {
 
 	var $data= array("system_title"=>"Case_System");
 	public function __construct()
@@ -23,7 +23,7 @@ class Case_Index extends CI_Controller {
   	$this->load->view('ybcase/ybcase_res');
 	  $this->load->view('templates/header2');
     $this->nav_index();
-  	$this->load->view('ybcase/ybcase_index');
+  	$this->load->view('ybcase/ybcase_admin');
 	  $this->load->view('templates/footer');
   }
 }

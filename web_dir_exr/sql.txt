@@ -15,8 +15,8 @@ VALUES
 	(1, 'messages', 'Messages', '1', '/', '0', 0, 'Root-', 1, 0, NULL),
 	(2, 'systems', 'Systems', '1', '#', '0', 0, 'Root', 2, 1, NULL),
 	(3, 'aboutus', 'AboutUs', '1', '/ybindex/ybsystem_aboutus', '0', 0, 'Root', 3, 0, NULL),
-	(5, 'publish_system', 'Publish_System', '2', '/ybpublish', 'systems', 0, 'Root', 1, 0, NULL),
-	(6, 'case_system', 'Case_System', '2', '/ybcase', 'systems', 0, 'Root', 2, 0, NULL),
+	(4, 'publish_system', 'Publish_System', '2', '/ybpublish', 'systems', 0, 'Root', 1, 0, NULL),
+	(5, 'case_system', 'Case_System', '2', '/ybcase', 'systems', 0, 'Root', 2, 0, NULL),
 	(7, 'admin', 'Admin', '2', '/admin', 'systems', 1, 'Root', 1, 0, NULL),
 	(8, 'manageuser', 'Manage User ', 'admin', '/admin/manage/manageuser', '0', 0, 'Root', 1, 0, NULL),
 	(9, 'managegroup', 'Manage Group', 'admin', '/admin/manage/managegroup', '0', 0, 'Root', 2, 0, NULL),
@@ -29,7 +29,9 @@ VALUES
 	(16, 'ftp_manage', 'FTP_Manage', '2', '/admin/ftp_manage', 'systems', 1, 'Root-', 2, 0, NULL),
 	(18, 'account_setting', 'Account Settings', '2', '/admin/account_setting', 'systems', 1, 'Root-', 2, 0, NULL),
 	(19, 'maketemplate', 'MakeTemplate', 'publish-1', '/ybpublish/mktep', '0', 0, 'Root-', 4, 0, 'Archive'),
-	(20, 'publish_files_analyse', 'PublishFiles_Analyse', 'publish-1', '/ybpublish/analyse', '0', 0, 'Root-', 5, 0, 'Search');
+	(20, 'publish_files_analyse', 'PublishFiles_Analyse', 'publish-1', '/ybpublish/analyse', '0', 0, 'Root-', 5, 0, 'Search'),
+	(21, 'case_system', 'Case System', 'case-1', '/ybcase', '0', 0, 'Root-', 1, 0, 'Calendar'),
+	(22, 'case_admin', 'Admin', 'case-1', '/ybcase/admin', '0', 0, 'Root-', 2, 1, 'setting');
 
 
 	
