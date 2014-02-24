@@ -2,19 +2,43 @@
 
 <div class="ui grid">
 	
-	<div class="four wide column">
-		<div class="ui green piled segment">
+	<div class="six wide column">
+		<!-- <div class="ui green piled segment">
 			<div class="ui blue button">
 				Start Case
 			</div>
-		</div>
+		</div> -->
 		<div class="ui green piled segment">
 			<h2>
-				Waiting for U ...
+				Unfinished
 			</h2>
 			<p>1</p>
 			<p>1</p>
 			<p>1</p>
+
+			<div class="ui small pagination menu">
+  				<a class="icon item">
+    				<i class="left arrow icon"></i>
+  				</a>
+  				<a class="active item">
+    				1
+  				</a>
+  				<div class="disabled item">
+    				...
+  				</div>
+  				<a class="item">
+  				  10
+  				</a>
+  				<a class="item">
+  				  11
+  				</a>
+  				<a class="item">
+  				  12
+  				</a>
+  				<a class="icon item">
+  				  <i class="right arrow icon"></i>
+  				</a>
+			</div>
 
 		</div>
 		<div class="ui green piled segment">
@@ -24,14 +48,37 @@
 			<p>1</p>
 			<p>1</p>
 			<p>1</p>
+			<div class="ui small pagination menu">
+  				<a class="icon item">
+    				<i class="left arrow icon"></i>
+  				</a>
+  				<a class="active item">
+    				1
+  				</a>
+  				<div class="disabled item">
+    				...
+  				</div>
+  				<a class="item">
+  				  10
+  				</a>
+  				<a class="item">
+  				  11
+  				</a>
+  				<a class="item">
+  				  12
+  				</a>
+  				<a class="icon item">
+  				  <i class="right arrow icon"></i>
+  				</a>
+			</div>
 
 		</div>
 	</div>
-	<div class="four wide column">
+<!-- 	<div class="four wide column">
 		<div class="ui segment">2</div>
-	</div>
+	</div> -->
 
-	<div class="eight wide column">
+	<div class="ten wide column">
 			
 
 		<div class="ui piled small feed segment">

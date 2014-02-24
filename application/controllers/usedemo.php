@@ -89,10 +89,7 @@ class UseDemo extends CI_Controller
   // 			);
 		// $db_ftp->insert('users',$data);
 		// var_dump($this->ybvsftp_model->insert_ftp_user('wqz1','1'));
-<<<<<<< HEAD
-=======
 
->>>>>>> 2040bbcdbfde4eadb2b9d60212215eba95043c74
 
 		show_error('test_error',404);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
