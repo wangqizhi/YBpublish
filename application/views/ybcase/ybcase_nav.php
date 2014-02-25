@@ -1,6 +1,9 @@
 <div class="ui grid">
   <div class="column">
     <div class="ui small green menu">
+    <!--   <div class="item">
+        <p>Hi,wqz</p>
+      </div> -->
       <a href="/" class="item">
         <i class="home icon"></i> HomePage
       </a>

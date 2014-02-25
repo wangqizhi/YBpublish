@@ -10,7 +10,11 @@ $('#mkflow_add_btn').on('click',function(){
 	var show_area = $('#mkflow_show_area').val();
 	var law_select_val = $('#law_select_val').val();
 	var law_input_val = $('#law_input_val').val();
+<<<<<<< HEAD
+	if (law_select_val=='' || law_input_val == '') {
+=======
 	if (show_area=='' || law_select_val=='' || law_input_val = '') {
+>>>>>>> 12144827268206190e46a0d4f092af5ba6b5905e
 		alertify.error('Empty Input');
 	};
 	if (show_area=="") {

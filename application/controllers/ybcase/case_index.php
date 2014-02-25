@@ -31,7 +31,13 @@ class Case_Index extends CI_Controller {
 
   public function case_start()
   {
-    # code...
+    $data = $this->data;
+    $this->load->view('templates/header_semantic',$data);
+    $this->load->view('ybcase/ybcase_res');
+    $this->load->view('templates/header2');
+    $this->nav_index();
+    $this->load->view('ybcase/ybcase_start');
+    $this->load->view('templates/footer');
   }
 }
 ?>

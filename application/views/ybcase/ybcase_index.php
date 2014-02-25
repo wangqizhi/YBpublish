@@ -82,6 +82,9 @@
 			
 
 		<div class="ui piled small feed segment">
+        <h2 class="ui header">
+          xxxx_flow status: finish
+        </h2>
   			<div class="event">
       			<div class="label">
           		<i class="circular pencil icon"></i>
@@ -90,11 +93,11 @@
       			</div>
       			<div class="content">
           			<div class="summary">
-              			Passed
+              		<a>WWY</a>: click pass
           			</div>
           			<div class="date"> 10:01</div>
          			<div class="extra text">
-              			Approve
+              		Approve
           			</div>
       			</div>
   			</div>
@@ -105,19 +108,33 @@
       			</div>
       			<div class="content">
           			<div class="summary">
-						Operationed
+						      <a>WQZ</a>:  click pass
           			</div>
           			<div class="date"> 10:30</div>
           			<div class="extra text">
-              			Have Done
+              		Have Done
           			</div>
       			</div>
+
+
   			</div>
+
+        <div class="ui reply form">
+          <div class="field">
+            <textarea id="case_textarea"></textarea>
+          </div>
+          <div id="case_play_btn" class="ui button green button labeled icon">
+            <i class="icon play"></i> pass
+          </div>
+          <div id="case_stop_btn" class="ui button green button labeled icon">
+            <i class="icon stop"></i> stop
+          </div>
         </div>
-
-
+    </div>
 
 
 
 	</div>
 </div>
+
+<script type="text/javascript" src="/res/ybcase/caseindex.js"></script>
