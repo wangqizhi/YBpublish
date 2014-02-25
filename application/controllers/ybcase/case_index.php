@@ -18,6 +18,8 @@ class Case_Index extends CI_Controller {
 
   public function index()
   {
+    // $this->output->enable_profiler(TRUE);
+
   	$data = $this->data;
 	  $this->load->view('templates/header_semantic',$data);
   	$this->load->view('ybcase/ybcase_res');
@@ -25,6 +27,11 @@ class Case_Index extends CI_Controller {
     $this->nav_index();
   	$this->load->view('ybcase/ybcase_index');
 	  $this->load->view('templates/footer');
+  }
+
+  public function case_start()
+  {
+    # code...
   }
 }
 ?>

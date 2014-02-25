@@ -31,8 +31,6 @@ VALUES
 	(19, 'maketemplate', 'MakeTemplate', 'publish-1', '/ybpublish/mktep', '0', 0, 'Root-', 4, 0, 'Archive'),
 	(20, 'publish_files_analyse', 'PublishFiles_Analyse', 'publish-1', '/ybpublish/analyse', '0', 0, 'Root-', 5, 0, 'Search'),
 	(21, 'case_system', 'Case System', 'case-1', '/ybcase', '0', 0, 'Root-', 1, 0, 'Calendar'),
-	(22, 'case_admin', 'Admin', 'case-1', '/ybcase/admin', '0', 0, 'Root-', 2, 1, 'setting');
-
-
-	
+	(22, 'case_admin', 'Admin', 'case-1', '/ybcase/admin', '0', 0, 'Root-', 2, 1, 'setting'),
+	(23, 'case_start', 'Start Flow', 'case-1', '/ybcase/case_start', '', 0, NULL, 2, 0, 'play');
 
