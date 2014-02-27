@@ -25,7 +25,7 @@
 						<input id="mktp_input" type="text" placeholder="Enter Template Name">
 					</div>
 				</div>
-				<div class="two fields">
+		<!-- 		<div class="two fields">
 					
 					<div class="field">
 						<div class="ui selection dropdown">
@@ -50,7 +50,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
+					
+				</div> -->
 				<div class="field">
 					<div id="mktp_btn" class="ui green button">
 						Make Template

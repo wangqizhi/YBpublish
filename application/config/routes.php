@@ -62,6 +62,7 @@ $route['ybpublish/(:any)'] = "ybpublish/publish_index/$1";
 // case_system
 $route['ybcase'] = "ybcase/case_index";
 $route['ybcase/admin'] = "ybcase/case_admin";
+$route['ybcase/admin/(:any)'] = "ybcase/case_admin/$1";
 $route['ybcase/(:any)'] = "ybcase/case_index/$1";
 
 

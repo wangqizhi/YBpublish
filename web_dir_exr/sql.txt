@@ -34,3 +34,153 @@ VALUES
 	(22, 'case_admin', 'Admin', 'case-1', '/ybcase/admin', '0', 0, 'Root-', 2, 1, 'setting'),
 	(23, 'case_start', 'Start Flow', 'case-1', '/ybcase/case_start', '', 0, NULL, 2, 0, 'play');
 
+
+
+
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 10.21.66.89
+Source Server Version : 50532
+Source Host           : 10.21.66.89:3306
+Source Database       : case_db
+
+Target Server Type    : MYSQL
+Target Server Version : 50532
+File Encoding         : 65001
+
+Date: 2014-02-26 14:05:06
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `yibancase_case`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_case`;
+CREATE TABLE `yibancase_case` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'case id ',
+  `sbj_id` int(11) NOT NULL COMMENT '项目id',
+  `sbj_name` varchar(50) NOT NULL COMMENT '项目名称',
+  `sendmail_to` varchar(5000) DEFAULT NULL COMMENT '需要邮件抄送人员id(用分号隔开)',
+  `current_user` int(11) NOT NULL COMMENT '当前所在位置',
+  `status` tinyint(4) NOT NULL COMMENT 'case状态(1:创建    2:待处理中   3:处理完毕   4:异常终止(bug)   5:人为终止 )',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_case
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_depart_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_depart_info`;
+CREATE TABLE `yibancase_depart_info` (
+  `id` int(11) NOT NULL,
+  `depart_name` varchar(25) NOT NULL COMMENT '部门名称',
+  `principal_id` int(11) NOT NULL COMMENT '部门主负责人id',
+  `sub_dep_id` int(11) DEFAULT NULL COMMENT '下级部门id',
+  `head_dep_id` int(11) DEFAULT NULL COMMENT '上级部门id',
+  `create_time` date NOT NULL COMMENT '部门成立时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_depart_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_subject_chat`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_subject_chat`;
+CREATE TABLE `yibancase_subject_chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject_id` int(11) NOT NULL COMMENT '项目id',
+  `from_userid` int(11) NOT NULL COMMENT '讨论用户id',
+  `content` varchar(2000) NOT NULL COMMENT '讨论内容',
+  `state` tinyint(4) NOT NULL COMMENT '状态(1:正常  2:删除 )',
+  `create_time` datetime NOT NULL COMMENT '讨论时间',
+  PRIMARY KEY (`id`),
+  KEY `subject_id` (`subject_id`),
+  CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `yibancase_subject_flow` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_subject_chat
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_subject_flow`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_subject_flow`;
+CREATE TABLE `yibancase_subject_flow` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '项目id',
+  `type` int(11) NOT NULL COMMENT '项目类型id',
+  `sbj_name` varchar(50) NOT NULL COMMENT '项目名称',
+  `flow` varchar(5000) NOT NULL COMMENT '流程(case流向)',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_subject_flow
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_subject_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_subject_log`;
+CREATE TABLE `yibancase_subject_log` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(10) unsigned NOT NULL COMMENT '项目id',
+  `userid` int(10) unsigned NOT NULL COMMENT '操作者用户id',
+  `to_userid` int(11) DEFAULT NULL COMMENT '下一个需要处理该case用户id',
+  `sendmail_to` varchar(5000) DEFAULT NULL COMMENT '需要邮件抄送人员id(用分号隔开)',
+  `sbj_property` varchar(5000) DEFAULT NULL COMMENT '项目附加属性(例如，1:备注  2:说明 3:路径说明)',
+  `log_time` datetime NOT NULL COMMENT '操作时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_subject_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_subject_template`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_subject_template`;
+CREATE TABLE `yibancase_subject_template` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '项目id',
+  `sbj_name` varchar(50) NOT NULL COMMENT '项目名称',
+  `sbj_content` varchar(5000) NOT NULL COMMENT '模版内容',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of yibancase_subject_template
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `yibancase_user_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `yibancase_user_info`;
+CREATE TABLE `yibancase_user_info` (
+  `id` int(11) NOT NULL COMMENT '用户id号(员工卡号)',
+  `depart_id` int(11) NOT NULL COMMENT '部门id',
+  `user_account` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '用户帐号',
+  `user_name` varchar(10) CHARACTER SET utf8 NOT NULL COMMENT '真实姓名',
+  `sex` tinyint(1) DEFAULT '1' COMMENT '性别',
+  `master_id` int(11) DEFAULT NULL COMMENT '主管id',
+  `e-mail` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '邮箱地址',
+  `create_time` datetime NOT NULL COMMENT '用户录入时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of yibancase_user_info
+-- ----------------------------

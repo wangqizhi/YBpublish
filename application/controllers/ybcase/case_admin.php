@@ -6,6 +6,7 @@ class Case_Admin extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('ybadmin/ybmodule_model');
+    $this->load->model('ybcase/case_template_model');
   	log_message('debug','---Case Controller Construct Successful');
 
   }
@@ -26,5 +27,19 @@ class Case_Admin extends CI_Controller {
   	$this->load->view('ybcase/ybcase_admin');
 	  $this->load->view('templates/footer');
   }
+
+  public function template_action_insert()
+  {
+    $result = $this->case_admin_model->inset_case_template();
+    if ($result[0]!=1) {
+
+      # code...
+    }
+
+    return $this->output->set_content_type('application/json')->set_output(json_encode($result_array));
+
+
+  }
+
 }
 ?>
