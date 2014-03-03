@@ -1,15 +1,15 @@
 <div class="ui inline grid">
 	<!-- <div class="eight  wide column"> -->
 		<div class="ui secondary vertical menu four wide column">
-			<a my_href="mktp" class="case active teal item">
+			<a mark="mktp" class="case active teal item">
     			Make Template
   			</a>
 
-  			<a my_href="mkflow" class="case  teal item">
+  			<a id="mkflow_a"  mark="mkflow" class="case  teal item">
     			Make Flow
   			</a>
   			
-  			<a my_href="power" class="case teal item">
+  			<a mark="power" class="case teal item">
     			Power
  			 </a>
   
@@ -18,7 +18,7 @@
 			<div class="ui form segment">
 				<div class="field">
 					<label></label>
-					<textarea id="mktp_textarea" placeholder="Enter Template e.g: publish_files：xxx"></textarea>
+					<textarea id="mktp_textarea" placeholder="Enter Template，split by enter(\n)"></textarea>
 				</div>
 				<div class="field">
 					<div class="input">
@@ -50,7 +50,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</div> -->
 				<div class="field">
 					<div id="mktp_btn" class="ui green button">
@@ -65,11 +65,21 @@
 					<div class="field">
 						<div class="ui selection dropdown">
 							<input type="hidden">
-							<div class="text">Choose Template Name</div>
+							<div id="template_drop" class="text">Choose Template Name</div>
 							<i class="dropdown icon"></i>
-							<div class="menu">
-								<div class="item" data-value="1">1</div>
-								<div class="item" data-value="2">2</div>
+							<div class="case_template menu">
+					<!-- 			<div class="item" data-value="1">1</div>
+								<div class="item" data-value="123412">123412</div>
+								<div class="item" data-value="2">2</div> -->
+									<?php 
+									// var_dump($template_name);exit;
+										foreach ($template_name as $one_template) {
+											echo '<div class="item" data-value="'.$one_template['sbj_name'].'">'.$one_template['sbj_name'].'</div>';
+											// echo $one_template['sbj_name'];
+											// echo '<div class="item" data-value="'+$one_template['sbj_name']+'">'+$one_template['sbj_name']+'</div>';
+										}
+
+									 ?>
 							</div>
 						</div>
 					</div>
@@ -89,8 +99,9 @@
 								<i class="dropdown icon"></i>
 								<div class="menu">
 									<div class="item" data-value="set_who">set_who</div>
-									<div class="item" data-value="set_leader">set_leader</div>
 									<div class="item" data-value="set_group">set_group</div>
+									<div class="item" data-value="set_leader">set_leader</div>
+	
 								</div>
 							</div>
 						</div>
@@ -207,7 +218,8 @@
 		$('a.case').removeClass('active');
 		$(this).addClass('active');
 		$('div.case').hide();
-		var which_id = $(this).attr('my_href');
+		var which_id = $(this).attr('mark');
+		// alertify.log(which_id);
 		$('#'+which_id).show();
 		// alertify.log($(this).attr('my_href'));
 	});
