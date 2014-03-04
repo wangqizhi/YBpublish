@@ -54,6 +54,10 @@ if (defined('ENVIRONMENT'))
 define('WORKDIR', '/work_dir/');//代码发布工作目录
 // define('BACKUPDIR', '/work_dir/');//代码备份目录
 
+//about email
+define('MAILNAME','YiBan Case System');
+define('MAILADDR','ybcase@ybian.cn');
+
 
 
 

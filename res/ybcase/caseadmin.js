@@ -32,6 +32,38 @@ $('#mkflow_add_btn').on('click',function(){
 	}
 });
 
+$('#save_flow_btn').on('click',function(){
+	var flow = $('#mkflow_show_area').val();
+	var flow_name = $('#flow_name_val').val();
+	var template_name = $('#template_name_val').val();
+	// alertify.log(template_name);return false;
+	if (flow==''||flow_name==''||template_name=='') {
+		alertify.error('Empty Input');
+		return false;
+	};
+	$.post('/ybcase/admin/flow_action_insert',{
+		flow:flow,
+		flow_name:flow_name,
+		template_name:template_name
+	},function(data){
+		if (data.r) {
+			alertify.success(data.a);
+		} else{
+			alertify.error(data.a);
+		};
+	});
+});
+
+
+$('#give_flowpow_btn').on('click',function(){
+	var flow_power_group  = $('#flowpow_group_val').val();
+	$.post('/ybcase/admin/give_flow_power',{
+		power_group:flow_power_group
+	},function(data){
+		alertify.log(data);
+
+	});
+});
 // $('#mkflow_a').on('click',function(){
 // 	$('.case_template').empty();
 // 	$.post('/ybcase/admin/template_action_get_name',{},function(data){

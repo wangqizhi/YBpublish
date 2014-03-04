@@ -55,6 +55,7 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
 	'session',//session
 	'log',//log
+	'email',//email
 	'ybauth',//自定义-登录类
 	'ybpower',//自定义-权限类
 	'yb_sh',//自定义-sh操作类

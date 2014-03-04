@@ -29,6 +29,19 @@ class UseDemo extends CI_Controller
 	{
 		$this->output->enable_profiler(TRUE);
 
+		//email
+		// $this->load->library('email');
+
+		$this->email->from(MAILADDR, MAILNAME);
+		$this->email->to('wqz@yiban.cn'); 
+		$this->email->cc('wqz@yiban.cn'); 
+		$this->email->bcc('wqz@yiban.cn'); 
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.'); 
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+
 
 		// echo php_sapi_name();
 		
@@ -68,8 +81,8 @@ class UseDemo extends CI_Controller
 		// echo shell_exec("whoami");
 
 		//ls_dir
-		$test = glob("/work_dir/*");
-		var_dump($test);
+		// $test = glob("/work_dir/*");
+		// var_dump($test);
 
 		//print all args
 		// var_dump($_SERVER['HTTP_REFERER']);
@@ -91,7 +104,7 @@ class UseDemo extends CI_Controller
 		// var_dump($this->ybvsftp_model->insert_ftp_user('wqz1','1'));
 
 
-		show_error('test_error',404);
+		// show_error('test_error',404);
 		// var_dump($this->session->set_userdata(array('UID'=>'13764018020')));
 		// var_dump($this->session->userdata('UID'));
 		// echo BASEPATH;

@@ -62,8 +62,8 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `yibancase_case`;
 CREATE TABLE `yibancase_case` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'case id ',
-  `sbj_id` int(11) NOT NULL COMMENT '项目id',
-  `sbj_name` varchar(50) NOT NULL COMMENT '项目名称',
+  `flow_id` int(11) NOT NULL COMMENT '项目id',
+  `case_content` varchar(5000) DEFAULT NULL,
   `sendmail_to` varchar(5000) DEFAULT NULL COMMENT '需要邮件抄送人员id(用分号隔开)',
   `current_user` int(11) NOT NULL COMMENT '当前所在位置',
   `status` tinyint(4) NOT NULL COMMENT 'case状态(1:创建    2:待处理中   3:处理完毕   4:异常终止(bug)   5:人为终止 )',
@@ -99,14 +99,12 @@ CREATE TABLE `yibancase_depart_info` (
 DROP TABLE IF EXISTS `yibancase_subject_chat`;
 CREATE TABLE `yibancase_subject_chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `subject_id` int(11) NOT NULL COMMENT '项目id',
+  `flow_id` int(11) NOT NULL COMMENT '项目id',
   `from_userid` int(11) NOT NULL COMMENT '讨论用户id',
   `content` varchar(2000) NOT NULL COMMENT '讨论内容',
   `state` tinyint(4) NOT NULL COMMENT '状态(1:正常  2:删除 )',
   `create_time` datetime NOT NULL COMMENT '讨论时间',
-  PRIMARY KEY (`id`),
-  KEY `subject_id` (`subject_id`),
-  CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `yibancase_subject_flow` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
@@ -119,10 +117,12 @@ CREATE TABLE `yibancase_subject_chat` (
 DROP TABLE IF EXISTS `yibancase_subject_flow`;
 CREATE TABLE `yibancase_subject_flow` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '项目id',
-  `type` int(11) NOT NULL COMMENT '项目类型id',
-  `sbj_name` varchar(50) NOT NULL COMMENT '项目名称',
+  `type_name` varchar(255) NOT NULL DEFAULT '' COMMENT '类型名称',
+  `template_id` int(11) NOT NULL COMMENT '项目名称',
+  `flow_name` varchar(255) DEFAULT NULL,
   `flow` varchar(5000) NOT NULL COMMENT '流程(case流向)',
   `create_time` datetime NOT NULL COMMENT '创建时间',
+  `power` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
@@ -136,7 +136,7 @@ CREATE TABLE `yibancase_subject_flow` (
 DROP TABLE IF EXISTS `yibancase_subject_log`;
 CREATE TABLE `yibancase_subject_log` (
   `id` int(11) NOT NULL,
-  `subject_id` int(10) unsigned NOT NULL COMMENT '项目id',
+  `flow_id` int(10) unsigned NOT NULL COMMENT '项目id',
   `userid` int(10) unsigned NOT NULL COMMENT '操作者用户id',
   `to_userid` int(11) DEFAULT NULL COMMENT '下一个需要处理该case用户id',
   `sendmail_to` varchar(5000) DEFAULT NULL COMMENT '需要邮件抄送人员id(用分号隔开)',

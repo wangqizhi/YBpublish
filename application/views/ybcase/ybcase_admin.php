@@ -25,33 +25,7 @@
 						<input id="mktp_input" type="text" placeholder="Enter Template Name">
 					</div>
 				</div>
-		<!-- 		<div class="two fields">
-					
-					<div class="field">
-						<div class="ui selection dropdown">
-							<input type="hidden">
-							<div class="text">Choose Module</div>
-							<i class="dropdown icon"></i>
-							<div class="menu">
-								<div class="item" data-value="1">1</div>
-								<div class="item" data-value="2">2</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="field">
-						<div class="ui selection dropdown">
-							<input type="hidden">
-							<div class="text">Choose SubModule</div>
-							<i class="dropdown icon"></i>
-							<div class="menu">
-								<div class="item" data-value="1">1</div>
-								<div class="item" data-value="2">2</div>
-							</div>
-						</div>
-					</div>
-
-				</div> -->
 				<div class="field">
 					<div id="mktp_btn" class="ui green button">
 						Make Template
@@ -63,8 +37,13 @@
 			<div class="ui segment">
 				<div class="ui form">
 					<div class="field">
+						<div class="ui input">
+							<input id="flow_name_val" type="text" placeholder="flow name">
+						</div>
+					</div>
+					<div class="field">
 						<div class="ui selection dropdown">
-							<input type="hidden">
+							<input id="template_name_val" type="hidden">
 							<div id="template_drop" class="text">Choose Template Name</div>
 							<i class="dropdown icon"></i>
 							<div class="case_template menu">
@@ -121,7 +100,7 @@
 					</div>
 
 					<div class="field">
-						<div class="ui small green button">
+						<div id="save_flow_btn" class="ui small green button">
 							<i class="save icon"></i>
 								save
 						</div>
@@ -136,6 +115,21 @@
 		<div id="power" class="case twelve wide column" style="display: none;">
 			<div class="ui segment">
 				<div class="ui form">
+					<div class="field">
+						<div class="ui input">
+							<input id="flowpow_group_val" type="text" placeholder='groupname'>
+						</div>
+						<div id="give_flowpow_btn" class="ui button">
+							give power
+						</div>
+					</div>
+					<div class="field">
+								<div class="ui horizontal divider">
+  						below not finish
+					</div>
+
+					</div>
+			
 					<div class="two fields">
 						<div class="field">
 							<div class="ui selection dropdown">
@@ -178,10 +172,10 @@
   							<label>I enjoy having fun</label>
 						</div>
 					</div>
-<div class="ui checkbox">
+<!-- <div class="ui checkbox">
     <input type="checkbox" id="unique-id">
     <label for="unique-id">贵宾犬</label>
-</div>
+</div> -->
 					<!-- <div class="field">
 						<div class="ui checkbox">
   							<input type="checkbox" name="fun">
