@@ -6,7 +6,7 @@ class AuthAcl
 {
 	public $CI;
 	function __construct(){
-		$this->CI =& get_instance();//实例化CI，可以用来调用其他资源
+		$this->CI =&get_instance();//实例化CI，可以用来调用其他资源
 		$this->CI->load->database();
 	}
 	
@@ -17,6 +17,7 @@ class AuthAcl
 		// return true;
 		// exit; 
 		// 
+		// echo '12';exit;
 		if (substr($_SERVER['PHP_SELF'], 0 ,10) == "/index.php") {
 			$check_url = substr($_SERVER['PHP_SELF'], 10);//去除index.php，获取当前url
 		}else{
