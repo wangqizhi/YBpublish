@@ -10,7 +10,6 @@ class Case_Flow_model extends CI_Model {
   }
 
 
-
 //set flow
   public function insert_case_flow($type_name = "0",$template_id,$flow_name,$flow,$power="template")
   {
@@ -62,6 +61,14 @@ class Case_Flow_model extends CI_Model {
   {
   	$query = $this->db->get_where('yibancase_subject_flow',$what);
   	return $query->result_array();
+  }
+
+  //get flow by like 
+  public function get_flow_by_flow_user($username='')
+  {
+    $this->db->like('flow',$username);
+    $query = $this->db->get('yibancase_subject_flow');    
+    return $query->result_array();
   }
 
 }

@@ -17,7 +17,7 @@ $('#start_flow_btn').on('click',function(){
 		return false;
 	};
 	// alertify.log(all_temp_val);
-	$.post('/ybcase/insert_flow',{
+	$.post('/ybcase/start_case',{
 		all_temp_size:all_temp_size,
 		email_who:email_who,
 		flow_name:flow_name,

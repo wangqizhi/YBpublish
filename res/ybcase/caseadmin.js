@@ -26,9 +26,9 @@ $('#mkflow_add_btn').on('click',function(){
 		return false;
 	};
 	if (show_area=="") {
-		$('#mkflow_show_area').val(law_select_val+'-'+law_input_val);
+		$('#mkflow_show_area').val(law_select_val+'-'+law_input_val+'+');
 	}else{
-		$('#mkflow_show_area').val(show_area+'+'+law_select_val+'-'+law_input_val);
+		$('#mkflow_show_area').val(show_area+law_select_val+'-'+law_input_val+'+');
 	}
 });
 

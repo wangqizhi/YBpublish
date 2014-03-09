@@ -24,8 +24,8 @@
     <div class="right menu">
       <div class="item">
           <div class="ui icon input">
-              <input type="text" placeholder="Search...">
-              <i class="search link icon"></i>
+              <input id="search_input" type="text" placeholder="Case ID...">
+              <i id="search" class="search link icon"></i>
           </div>
       </div>
     <!--   <div class="ui dropdown item">
@@ -56,5 +56,8 @@
     }
 });
 
-
+  $('#search').on('click',function(){
+    var search_input=$('#search_input').val();
+    location.href='?case_id='+search_input;
+  })
 </script>

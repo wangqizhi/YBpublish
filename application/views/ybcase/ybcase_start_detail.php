@@ -15,7 +15,7 @@
 					echo '<div class="field">';
 					echo '<label for="">'.$template.':</label>';
 					echo '<div class="input">';
-					echo '<input class="temp_value" id="tp_value_'.$template.'" type="text">';
+					echo '<input class="temp_value" id="'.$template.'" type="text">';
 					echo '</div>';
 					echo '</div>';
 				}

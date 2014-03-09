@@ -4,9 +4,12 @@
 
 
 class Ybauth extends CI_Session {
+	public $CI;
 	public function __construct($pram=array())
 	{
 		parent::__construct($pram);
+		$this->CI =&get_instance();//实例化CI，可以用来调用其他资源
+		$this->CI->load->database();
 
 	}
 
@@ -41,7 +44,7 @@ class Ybauth extends CI_Session {
 
 
 		//check的时候刷新登录过期时间
-		self::set_LID($_COOKIE['uname']);
+		// self::set_LID($_COOKIE['uname']);
 
 		return true;
 		// echo "1";
@@ -58,7 +61,16 @@ class Ybauth extends CI_Session {
 		// $check_u_p = 1;
 		// var_dump($check_u_p);
 		if ($check_u_p == "1") {
-			self::set_LID($username);
+			$is_username = $this->CI->db->get_where('yb_user',array('username'=>$username))->num_rows;
+			if ($is_username==0) {
+				$userinfo = $this->CI->db->get_where('yb_user',array('nick'=>$username))->result_array();
+			} else {
+				$userinfo = $this->CI->db->get_where('yb_user',array('username'=>$username))->result_array();
+			}
+			$usernick = $userinfo[0]['nick'];
+			$username = $userinfo[0]['username'];
+			// var_dump($username.$usernick);
+			self::set_LID($username,$usernick);
 			log_message('debug','---ID:'.$username.' login successful');
 			return true;
 		} else {
@@ -69,13 +81,16 @@ class Ybauth extends CI_Session {
 
 
 	//登录后设置LID
-	public function set_LID($username)
+	public function set_LID($username,$usernick)
 	{
+
 		// $uid = md5($username.$_SERVER['REMOTE_ADDR']);
-		$lid = md5($username.'@'.$_SERVER['REMOTE_ADDR']);
+		$lid = md5($usernick.'@'.$_SERVER['REMOTE_ADDR']);
 		self::set_userdata('LID',$lid);
-		self::set_userdata('uname',$username);
-		setcookie('uname',$username,time()+60*60,"/");
+		self::set_userdata('uname',$usernick);
+		self::set_userdata('uid',$username);
+		setcookie('uname',$usernick,time()+60*60,"/");
+		// setcookie('uid',$username,time()+60*60,"/");
 		log_message('debug','---set the login_sign');
 
 		
