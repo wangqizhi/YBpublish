@@ -50,7 +50,11 @@ class Case_Index extends CI_Controller {
       'all_case_break'=>$all_case_break,
       );
     // $this->case_model->get_case(array(''));
-    if ($case_id == '' ) {
+    if (sizeof($all_case)==0) {
+      $data['current_user'] = -1;
+      $data['case_one'] = array();
+      $data['all_chat'] = array();
+    } else if ($case_id == '' ) {
       $flow_info = $this->case_flow_model->get_flow_by_what(array('id'=>$all_case[0]['flow_id']));
       $flow = $flow_info[0]['flow'];
 
