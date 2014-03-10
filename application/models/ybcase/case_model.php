@@ -55,7 +55,10 @@ class Case_model extends CI_Model {
 
     if ($status=='') {
       $this->db->where('status',1);
-    } elseif($status==2) {
+    } elseif($status==-1){
+      // $this->db->where('status',1);
+      
+    }elseif($status==2) {
       $this->db->where('status',2);
     } elseif($status==3) {
       $this->db->where('status',3);

@@ -40,6 +40,7 @@ class Case_Index extends CI_Controller {
       array_push($all_flow_id, $one_flow['id']);
     }
     $case_num = $this->case_model->get_case_num($all_flow_id);
+    $all_case_allcase = $this->case_model->get_case_by_flow_id($all_flow_id,-1);
     $all_case = $this->case_model->get_case_by_flow_id($all_flow_id);
     $all_case_finished = $this->case_model->get_case_by_flow_id($all_flow_id,2);
     $all_case_break = $this->case_model->get_case_by_flow_id($all_flow_id,3);
@@ -49,12 +50,12 @@ class Case_Index extends CI_Controller {
       'all_case_finished'=>$all_case_finished,
       'all_case_break'=>$all_case_break,
       );
-    // $this->case_model->get_case(array(''));
-    if (sizeof($all_case)==0) {
+    // var_dump($all_case_allcase);
+    if (sizeof($all_case_allcase)==0) {
       $data['current_user'] = -1;
       $data['case_one'] = array();
       $data['all_chat'] = array();
-    } else if ($case_id == '' ) {
+    } elseif ($case_id == '' and sizeof($all_case)!=0) {
       $flow_info = $this->case_flow_model->get_flow_by_what(array('id'=>$all_case[0]['flow_id']));
       $flow = $flow_info[0]['flow'];
 
