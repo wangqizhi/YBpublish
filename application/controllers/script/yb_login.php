@@ -12,6 +12,8 @@ class Yb_Login extends CI_Controller {
   		$this->input->is_cli_request();
   		// echo $username;
   		// echo $passwd;
+      $username= urldecode($username);
+      $passwd= urldecode($passwd);
 	    echo $this->ybuser_model->cli_get_user_num($username,$passwd);
 
   }

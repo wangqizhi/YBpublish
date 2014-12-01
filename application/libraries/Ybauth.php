@@ -57,6 +57,8 @@ class Ybauth extends CI_Session {
 	public function auth_check($username,$passwd){
 		// $check_u_p = $this->ybuser_model->get_user_num(1);
 		//修改成执行rsa脚本，即可支持rsa登录
+		$username = urlencode($username);
+        $passwd = urlencode($passwd);
 		$check_u_p = shell_exec("/usr/local/php/bin/php /usr/local/web/YBpublish/index.php script/yb_login pass_login ".$username." ".$passwd);
 		// $check_u_p = 1;
 		// var_dump($check_u_p);
