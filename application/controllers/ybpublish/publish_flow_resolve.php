@@ -202,7 +202,8 @@ class Publish_Flow_Resolve extends CI_Controller {
       //检查权限目录是否存在
       if ($d_dir=="" || $backup_dir=="") {
         log_message('debug','****Dir：'.$d_dir.' or '.$backup_dir.' Not Exist');
-        return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
+        #return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
+        return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$args[2].'--test','goon'=>0);
 
       }
 

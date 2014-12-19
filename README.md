@@ -1,4 +1,4 @@
-YBpublish
+YBpublish-stable-0.1
 ====================
 
 DB_config:
