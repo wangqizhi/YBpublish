@@ -146,7 +146,7 @@ class Publish_Flow_Resolve extends CI_Controller {
         $this->yb_sh->sh_mkdir("logs");
       }
       // $flow_name = "testincode";
-      shell_exec("echo '".date('Y-m-d-H:i:s')." Publish ".$flow_name." Successful!' | sudo tee -a ".WORKDIR."logs/publish.logs 2>&1");
+      shell_exec("echo '".date('Y-m-d-H:i:s')." ".$this->session->userdata('uname')." Publish ".$flow_name." Successful!' | sudo tee -a ".WORKDIR."logs/publish.logs 2>&1");
       
       //若所有函数执行通过，则表示发布成功
       return array('r'=>true,'a'=>$last_message_out);
@@ -202,7 +202,8 @@ class Publish_Flow_Resolve extends CI_Controller {
       //检查权限目录是否存在
       if ($d_dir=="" || $backup_dir=="") {
         log_message('debug','****Dir：'.$d_dir.' or '.$backup_dir.' Not Exist');
-        return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
+        #return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$d_dir.'--test','goon'=>0);
+        return array('r'=>false,'a'=>'Rule-backup : Dir Power Not Exist '.$args[2].'--test','goon'=>0);
 
       }
 

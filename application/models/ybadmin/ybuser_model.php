@@ -120,6 +120,8 @@ class Ybuser_model extends CI_Model {
       $data = array(
         'passwd'=>md5(trim($passwd)),
         );
+      $this->db->where('username',$username);
+      $this->db->or_where('nick',$username);
       $this->db->update('yb_user',$data);
       return 1;
     }else{
